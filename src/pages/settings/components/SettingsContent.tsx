@@ -4,7 +4,7 @@ import {
   useSettingsContext,
   defaultSettingsValues,
 } from "../../../shared/context";
-import "../../../styles/settings.css";
+import "../styles/settings.css";
 
 const SettongsContent = () => {
   const settings = useSettingsContext();

@@ -1,8 +1,10 @@
-import "../../styles/home.css";
-import { Link, useNavigate } from "react-router-dom";
+import "./styles/home.css";
+import { useNavigate } from "react-router-dom";
 import Footer from "../../components/UI/footer/Footer";
 import MyButton from "../../components/UI/button/MyButton";
 import { useCallback } from "react";
+import SettingsIcon from "../../components/UI/settings/SettingsIcon";
+import AppTitle from "../../components/UI/app_title/AppTitle";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,14 +16,14 @@ const Home = () => {
   const handleButtonPicturesClick = useCallback(() => {
     navigate("/categories/pictures");
   }, [navigate]);
-  
+
   return (
     <div className="home_page">
       <header className="home_header">
-        <Link to="/settings" className="home_header_settings" />
+        <SettingsIcon />
       </header>
       <main className="home_content">
-        <h1 className="home_content_header">Movie Quiz</h1>
+        <AppTitle title="Movie Quiz" size="big" />
         <div className="home_content_buttons">
           <MyButton
             text={"Actors Quiz"}

@@ -1,0 +1,59 @@
+.app_title_small {
+  position: relative;
+  color: #f5f5dc;
+  font-family: 'Arvo', serif;
+  margin-left: 30px;
+  font-weight: 800;
+}
+
+.ellipse1_small,
+.ellipse2_small {
+  position: absolute;
+  z-index: -1;
+  top: -10px;
+  width: 40px;
+  height: 40px;
+  border: 0.5px solid #f5f5dc;
+  border-radius: 20px;
+  box-shadow: 3px 2px 40px #f5f5dc7e;
+
+}
+
+.ellipse2_small {
+  top: -5px;
+  width: 30px;
+  height: 30px;
+  left: 30px;
+}
+
+/* ****    ******        *****    ******       ******    ****    ****     *****    **** */
+
+.app_title_big {
+  position: relative;
+  color: #f5f5dc;
+  width: max-content;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Arvo', serif;
+  text-shadow: 3px 3px 5px #c2c2af;
+}
+
+.ellipse1_big,
+.ellipse2_big {
+  position: absolute;
+  z-index: -1;
+  top: -40px;
+  left: -20px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #f5f5dc;
+  border-radius: 50%;
+  box-shadow: 3px 2px 15px #f5f5dc54;
+}
+
+.ellipse2_big {
+  top: -25px;
+  width: 120px;
+  height: 120px;
+  left: 80px;
+}

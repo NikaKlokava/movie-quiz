@@ -1,0 +1,23 @@
+.home_page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+.home_header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home_content_buttons {
+  display: flex;
+  justify-content: space-evenly;
+  column-gap: 100px;
+}
