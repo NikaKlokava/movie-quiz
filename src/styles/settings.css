@@ -1,0 +1,123 @@
+.settings_page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+.settings_header,
+.settings_header_back {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings_header {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.settings_header_back {
+  min-width: 120px;
+}
+
+.back_text {
+  color: #f5f5dc;
+  font-family: 'Arvo', serif;
+}
+
+.back_icon,
+.close_icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.back_icon {
+  background-image: url('../assets/back-icon.svg');
+}
+
+.close_icon {
+  background-image: url('../assets/close-icon.svg');
+}
+
+.settings_content {
+  width: 50%;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.settings_content_volume,
+.settings_content_timeon,
+.settings_content_time {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: bisque;
+  font-size: 24px;
+  font-family: 'Arvo', serif;
+}
+
+.volume_slider {
+  width: 250px;
+  height: 4px;
+  accent-color: bisque;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.timeon_choose {
+  display: flex;
+  column-gap: 20px;
+  margin-top: 15px;
+}
+
+.time_on,
+.time_off {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.active {
+  opacity: 1;
+  border-bottom: 1px solid bisque;
+}
+
+.time_choose {
+  display: flex;
+  column-gap: 15px;
+  margin-top: 20px;
+}
+
+.current_game_time {
+  font-size: 20px;
+}
+
+.increment,
+.decrement {
+  width: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: bisque;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s ease-in-out;
+}
+
+.increment:hover,
+.decrement:hover {
+  opacity: 1;
+}
+
+.settings_content_buttons {
+  display: flex;
+  column-gap: 30px;
+}
+
