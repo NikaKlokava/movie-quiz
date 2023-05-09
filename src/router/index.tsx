@@ -1,9 +1,9 @@
-import Categories from "../pages/Categories";
-import Home from "../pages/Home";
-import Questions from "../pages/Questions";
-import Settings from "../pages/Settings";
-import Actors from "../pages/Actors";
-import Pictures from "../pages/Pictures";
+import Categories from "../pages/categories/Categories";
+import Home from "../pages/home/Home";
+import Questions from "../pages/questions/Questions";
+import Settings from "../pages/settings/Settings";
+import Actors from "../pages/actors/Actors";
+import Pictures from "../pages/pictures/Pictures";
 import "../App.css";
 
 export const routes = [

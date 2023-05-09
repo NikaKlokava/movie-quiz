@@ -1,4 +1,4 @@
-import Footer from "../components/UI/Footer/Footer";
+import Footer from "../../components/UI/footer/Footer";
 
 const Pictures = () => {
   return (

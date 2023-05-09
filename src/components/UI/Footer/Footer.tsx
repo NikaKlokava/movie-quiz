@@ -1,4 +1,4 @@
-import classes from "../Footer/Footer.module.css";
+import classes from "../footer/footer.module.css";
 
 const Footer = () => {
   return (
