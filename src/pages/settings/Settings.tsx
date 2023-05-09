@@ -1,6 +1,6 @@
 import Footer from "../../components/UI/footer/Footer";
 import { Link } from "react-router-dom";
-import "../../styles/settings.css";
+import "./styles/settings.css";
 import SettingsContent from "./components/SettingsContent";
 
 const Settings = () => {

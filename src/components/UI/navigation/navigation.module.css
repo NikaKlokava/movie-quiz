@@ -1,0 +1,13 @@
+.navigation_home,
+.navigation_categories {
+  color: #ffe4c4;
+  font-size: 16px;
+  font-family: 'Arvo', serif;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.navigation_categories,
+.navigation_home:hover {
+  color: #ffba66;
+}
