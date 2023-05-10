@@ -6,6 +6,7 @@
   background-repeat: no-repeat;
   transition: 0.7s ease-in-out;
   cursor: pointer;
+  align-self: center;
 }
 
 .settings_icon:hover {

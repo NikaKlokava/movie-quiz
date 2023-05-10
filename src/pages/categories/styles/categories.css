@@ -1,21 +1,10 @@
-.actors_page {
+.categories_page {
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
 }
 
-.actors_header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.actors_header_content {
-  display: flex;
-  gap: 30px;
-}
-
-.actor_list {
+.categories_list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
   gap: 30px;

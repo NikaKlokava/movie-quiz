@@ -10,11 +10,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleButtonActorsClick = useCallback(() => {
-    navigate("/categories/actors");
+    navigate("/categories", {state: "actors"});
   }, [navigate]);
 
-  const handleButtonPicturesClick = useCallback(() => {
-    navigate("/categories/pictures");
+  const handleButtonMoviesClick = useCallback(() => {
+    navigate("/categories", {state: "movies"});
   }, [navigate]);
 
   return (
@@ -30,8 +30,8 @@ const Home = () => {
             onClick={handleButtonActorsClick}
           ></MyButton>
           <MyButton
-            text={"Pictures Quiz"}
-            onClick={handleButtonPicturesClick}
+            text={"Movies Quiz"}
+            onClick={handleButtonMoviesClick}
           ></MyButton>
         </div>
       </main>
