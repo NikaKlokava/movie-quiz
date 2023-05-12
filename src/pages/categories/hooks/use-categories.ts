@@ -1,17 +1,15 @@
-import {
-  mockActorsCategories,
-  mockMoviesCategories,
-} from "../../../mocks/categories";
+import { categories } from "../../../mocks/categories";
 
-export const useCategories = (type: "actors" | "movies") => {
+export const useCategories = (id: string | undefined) => {
   // запрос на сервер
 
-  switch (type) {
-    case "actors": {
-      return mockActorsCategories;
-    }
-    case "movies": {
-      return mockMoviesCategories;
-    }
+  if (id === undefined) {
+    throw new Error("Please provide id");
   }
+  const category = categories[id];
+  if (category === undefined) {
+    throw new Error("Incorrect id");
+  }
+
+  return category;
 };

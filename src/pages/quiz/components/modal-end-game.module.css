@@ -1,0 +1,38 @@
+.end_status_icon {
+  width: 120px;
+  height: 120px;
+  background-size: 120px 120px;
+}
+
+.stopped_icon {
+  background-image: url('../../../assets/fail_icon.svg');
+}
+
+.congrat_icon {
+  background-image: url('../../../assets/winn_icon.svg');
+}
+
+.end_status,
+.end_subscribe {
+  color: black;
+  font-family: 'Arvo', serif;
+}
+
+.end_status {
+  font-size: 20px;
+}
+
+.end_subscribe {
+  font-size: 35px;
+}
+
+.end_buttons_conainer {
+  display: flex;
+  column-gap: 15px;
+}
+
+.modal_buttons {
+  color: black;
+  border-color: grey;
+  min-width: 130px;
+}
