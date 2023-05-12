@@ -3,17 +3,20 @@ import { useNavigate } from "react-router";
 import classes from "./category_item.module.css";
 
 type CategoryItemType = {
+  id: number;
   part: string;
   success: string;
   avatar?: string;
 };
 
-const CategoryItem = ({ part, success, avatar }: CategoryItemType) => {
+const CategoryItem = ({ id, part, success, avatar }: CategoryItemType) => {
   const navigate = useNavigate();
 
   const handlePlayClick = useCallback(() => {
-    navigate("/questions");
-  }, [navigate]);
+    navigate(`/quiz/${id}`);
+  }, [id, navigate]);
+
+  // console.log('render CategoryItem');
 
   return (
     <div className={classes.item}>
