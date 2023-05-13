@@ -9,6 +9,5 @@ export const useQuiz = (id: string | undefined) => {
   if (quiz === undefined) {
     throw new Error("Incorrect id");
   }
-
   return quiz;
 };

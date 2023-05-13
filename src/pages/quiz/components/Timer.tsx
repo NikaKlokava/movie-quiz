@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSettingsContext } from "../../../shared/context";
-import "./timer.css";
+import "../styles/timer.css";
 
 type Props = {
   onTimeout: (res: QuestionResult) => void;
