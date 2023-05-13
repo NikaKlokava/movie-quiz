@@ -1,12 +1,16 @@
-.questions_page {
+.quiz_page {
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr 5fr 1fr;
 }
-
+.quiz_header {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
 
 /*  ******************************************** */
-.questions_content {
+.quiz_content {
   z-index: 0;
   display: flex;
   flex-direction: column;
