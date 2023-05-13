@@ -2,11 +2,12 @@ import { useCallback, useState } from "react";
 import Footer from "../../components/UI/footer/Footer";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { useQuiz } from "./hooks";
-import "./styles/questions.css";
+import "./styles/quiz.css";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
 import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { useParams } from "react-router";
+import { StopQuiz } from "./components/StopQuiz";
 
 const Quiz = () => {
   const params = useParams();
@@ -32,7 +33,7 @@ const Quiz = () => {
     setResult(res);
   }, []);
 
-  const handleExitClick = useCallback((res: GameResult) => {
+  const handleStopQuiz = useCallback((res: GameResult) => {
     setGameResult(res);
   }, []);
 
@@ -51,13 +52,16 @@ const Quiz = () => {
   // }
 
   return (
-    <div className="questions_page">
-      <header className="questions_header">
+    <div className="quiz_page">
+      <header className="quiz_header">
         {!result && !gameResult && (
-          <Timer onTimeout={endTimerTime} onStopPress={handleExitClick} /> // выделить кнопку в отдельный компонент
+          <>
+            <StopQuiz onStop={handleStopQuiz} />
+            <Timer onTimeout={endTimerTime} />
+          </>
         )}
       </header>
-      <main className="questions_content">
+      <main className="quiz_content">
         <Question
           data={questions[index]}
           onAnswer={handleQuestionResults}

@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSettingsContext } from "../../../shared/context";
-import "../styles/timer.css";
+import cl from "../styles/timer.module.css";
 
 type Props = {
   onTimeout: (res: QuestionResult) => void;
-  onStopPress: (end: GameResult) => void;
 };
 
-export const Timer = ({ onTimeout, onStopPress }: Props) => {
+export const Timer = ({ onTimeout }: Props) => {
   const settings = useSettingsContext();
   const [seconds, setSeconds] = useState(0);
 
@@ -28,22 +27,17 @@ export const Timer = ({ onTimeout, onStopPress }: Props) => {
     }
   }, [onTimeout, seconds, settings.time]);
 
-  const hanldeTimerStopClick = useCallback(() => {
-    onStopPress("stopped");
-  }, [onStopPress]);
-
   return (
-    <div className="question_timer">
-      <div className="timer_stop" onClick={hanldeTimerStopClick}></div>
-      <div className="timer_duration">
-        <div className="timer_duration_all">
+    <div className={cl.question_timer}>
+      <div className={cl.timer_duration}>
+        <div className={cl.timer_duration_all}>
           <div
-            className="timer_duration_tick"
+            className={cl.timer_duration_tick}
             style={{ width: `${(seconds / settings.time) * 100}%` }}
           />
         </div>
       </div>
-      <div className="timer_time">{seconds}</div>
+      <div className={cl.timer_time}>{seconds}</div>
     </div>
   );
 };
