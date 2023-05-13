@@ -1,5 +1,5 @@
 import MyButton from "../../../components/UI/button/MyButton";
-import cl from "./modal-window.module.css";
+import cl from "../styles/modal-window.module.css";
 import { memo, useMemo } from "react";
 import { ModalWrapper } from "./ModalWrapper";
 
@@ -45,5 +45,3 @@ export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
     </ModalWrapper>
   );
 });
-
-export default ModalWindowResult;

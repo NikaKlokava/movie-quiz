@@ -1,4 +1,4 @@
-import cl from "./modal-wrapper.module.css";
+import cl from "../styles/modal-wrapper.module.css";
 
 export const ModalWrapper = ({ children }: any) => {
   return (

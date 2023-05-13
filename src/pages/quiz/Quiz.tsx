@@ -10,15 +10,15 @@ import { useParams } from "react-router";
 
 const Quiz = () => {
   const params = useParams();
-
-  console.log(params?.id);
   const questions = useQuiz(params?.id);
 
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
+  const [correctAnswers, setCorrect] = useState(0);
 
   const handleQuestionResults = useCallback((res: QuestionResult) => {
+    setCorrect(res === "passed" ? (prev) => prev + 1 : (prev) => prev);
     setResult(res);
   }, []);
 
@@ -32,8 +32,8 @@ const Quiz = () => {
     setResult(res);
   }, []);
 
-  const handleExitClick = useCallback((end: GameResult) => {
-    setGameResult(end);
+  const handleExitClick = useCallback((res: GameResult) => {
+    setGameResult(res);
   }, []);
 
   const restartQuiz = useCallback(() => {
@@ -42,9 +42,13 @@ const Quiz = () => {
     setIndex(0);
   }, []);
 
-  if (questions === undefined) {
-    return null;
-  }
+  const finishQuiz = useCallback((res: GameResult) => {
+    setGameResult(res);
+  }, []);
+
+  // if (questions === undefined) {
+  //   return null;
+  // }
 
   return (
     <div className="questions_page">
@@ -54,7 +58,11 @@ const Quiz = () => {
         )}
       </header>
       <main className="questions_content">
-        <Question data={questions[index]} onAnswer={handleQuestionResults} />
+        <Question
+          data={questions[index]}
+          onAnswer={handleQuestionResults}
+          onFinish={finishQuiz}
+        />
 
         {result && (
           <ModalWindowResult
@@ -67,6 +75,7 @@ const Quiz = () => {
           <ModalWindowEndGame
             gameResult={gameResult}
             data={questions}
+            correctAnswers={correctAnswers}
             onRestartPress={restartQuiz}
           />
         )}
