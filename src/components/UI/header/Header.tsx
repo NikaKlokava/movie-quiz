@@ -3,6 +3,7 @@ import Navigation from "../navigation/Navigation";
 import SettingsIcon from "../settings/SettingsIcon";
 import cl from "./header.module.css";
 
+// TODO
 const Header = () => {
   return (
     <header className={cl.header}>

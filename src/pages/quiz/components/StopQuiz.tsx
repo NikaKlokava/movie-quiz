@@ -7,7 +7,9 @@ type Props = {
 
 export const StopQuiz = ({ onStop }: Props) => {
   const onStopQuizClick = useCallback(() => {
+    //todo
     onStop("stopped");
   }, [onStop]);
+
   return <div className={cl.stop_quiz} onClick={onStopQuizClick}></div>;
 };

@@ -32,7 +32,7 @@ export const ModalWindowEndGame = ({
     navigate(routeNames.Home);
   };
 
-  const hanldeYesOrNextClick = () => {
+  const hanldeYesOrNextClick = () => {//todo
     if (isPlayStopped) {
       onRestartPress();
     } else {

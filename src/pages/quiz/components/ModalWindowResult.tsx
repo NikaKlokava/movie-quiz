@@ -12,6 +12,7 @@ type Props = {
 export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
   const { avatar, correctAnswer, correct } = useMemo(() => {
     return {
+      //todo remove return word
       avatar: data.avatar,
       correctAnswer: data.answers.find((answer) => answer.correct),
       correct: result === "passed",

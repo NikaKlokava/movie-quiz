@@ -20,13 +20,13 @@ const Home = () => {
           <MyButton
             text={"Actors Quiz"}
             onClick={() => {
-              navigate(routeNames.Categories.replace(":id", "1"));
+              navigate(`${routeNames.Categories}/1`);
             }}
           ></MyButton>
           <MyButton
             text={"Movies Quiz"}
             onClick={() => {
-              navigate(routeNames.Categories.replace(":id", "2"));
+              navigate(`${routeNames.Categories}/2`);
             }}
           ></MyButton>
         </div>

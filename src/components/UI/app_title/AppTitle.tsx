@@ -1,5 +1,6 @@
 import classes from "./title.module.css";
 
+// TODO
 const AppTitle = ({ size, title }: any) => {
   if (size === "small") {
     return (
