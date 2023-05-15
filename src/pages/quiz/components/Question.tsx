@@ -9,7 +9,7 @@ type Props = {
 
 export const Question = memo(({ data, onAnswer, onFinish }: Props) => {
   const onAnswerClick = useCallback(
-    (answer: any) => {
+    (answer: any) => {//todo
       onAnswer(answer.correct ? "passed" : "failed");
     },
     [onAnswer]

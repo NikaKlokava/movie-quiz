@@ -10,6 +10,8 @@ const Categories = () => {
 
   const categories = useCategories(params?.id);
 
+  
+
   return (
     <div className="categories_page">
       <Header />

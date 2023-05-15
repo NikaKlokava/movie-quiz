@@ -75,7 +75,7 @@ const Quiz = () => {
             onClose={handleNextClick}
           />
         )}
-        {gameResult && (
+        {gameResult && ( //todo
           <ModalWindowEndGame
             gameResult={gameResult}
             data={questions}

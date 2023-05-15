@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
+import { routeNames } from "../../../../router";
 import classes from "./category_item.module.css";
 
 type CategoryItemType = {
@@ -13,10 +14,8 @@ const CategoryItem = ({ id, part, success, avatar }: CategoryItemType) => {
   const navigate = useNavigate();
 
   const handlePlayClick = useCallback(() => {
-    navigate(`/quiz/${id}`);
+    navigate(`${routeNames.Quiz}/${id}`);
   }, [id, navigate]);
-
-  // console.log('render CategoryItem');
 
   return (
     <div className={classes.item}>

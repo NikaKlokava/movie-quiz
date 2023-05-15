@@ -26,4 +26,4 @@ declare type Category = {
   avatar?: string;
 };
 
-declare type Categories = { [id: string]: Category[] };
+declare type Categories = { [id: string]: Category[] }; //todo
