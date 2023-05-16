@@ -1,6 +1,6 @@
-.stop_quiz {
-  width: 25px;
-  height: 25px;
+.stop_quiz_icon {
+  width: 35px;
+  height: 35px;
   background-image: url('../../../assets/close-icon.svg');
   border-radius: 15px;
   align-self: center;

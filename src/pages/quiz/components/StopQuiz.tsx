@@ -10,5 +10,5 @@ export const StopQuiz = memo(({ onStop }: Props) => {
     onStop("stopped");
   };
 
-  return <div className={cl.stop_quiz} onClick={onStopQuizClick}></div>;
+  return <div className={cl.stop_quiz_icon} onClick={onStopQuizClick}></div>;
 });
