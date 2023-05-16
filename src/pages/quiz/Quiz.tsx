@@ -8,10 +8,13 @@ import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { useParams } from "react-router";
 import { StopQuiz } from "./components/StopQuiz";
 import cl from "./styles/quiz.module.css";
+import { useSettingsContext } from "../../shared/context";
 
 export const Quiz = () => {
   const params = useParams();
   const questions = useQuiz(params?.id);
+  const settings = useSettingsContext();
+  // console.log(settings.active);
 
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);
@@ -54,7 +57,7 @@ export const Quiz = () => {
         {!result && !gameResult && (
           <>
             <StopQuiz onStop={handleStopQuiz} />
-            <Timer onTimeout={endTimerTime} />
+            {settings.active && <Timer onTimeout={endTimerTime} />}
           </>
         )}
       </header>
