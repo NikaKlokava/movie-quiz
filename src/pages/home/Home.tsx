@@ -1,22 +1,22 @@
-import "./styles/home.css";
-import { useNavigate } from "react-router-dom";
-import Footer from "../../components/UI/footer/Footer";
-import MyButton from "../../components/UI/button/MyButton";
-import SettingsIcon from "../../components/UI/settings/SettingsIcon";
-import AppTitle from "../../components/UI/app_title/AppTitle";
+import { AppTitle } from "../../shared/components/UI/app_title/AppTitle";
+import { SettingsIcon } from "../../shared/components/UI/settings/SettingsIcon";
+import { MyButton } from "../../shared/components/UI/button/MyButton";
+import { Footer } from "../../shared/components/UI/footer/Footer";
 import { routeNames } from "../../router";
+import { useNavigate } from "react-router-dom";
+import cl from "./styles/home.module.css";
 
-const Home = () => {
+export const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="home_page">
-      <header className="home_header">
+    <div className={cl.home_page}>
+      <header className={cl.home_header}>
         <SettingsIcon />
       </header>
-      <main className="home_content">
+      <main className={cl.home_content}>
         <AppTitle title="Movie Quiz" size="big" />
-        <div className="home_content_buttons">
+        <div className={cl.home_content_buttons}>
           <MyButton
             text={"Actors Quiz"}
             onClick={() => {
@@ -35,5 +35,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

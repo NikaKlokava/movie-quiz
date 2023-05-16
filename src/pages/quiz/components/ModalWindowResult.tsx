@@ -1,4 +1,4 @@
-import MyButton from "../../../components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/UI/button/MyButton";
 import cl from "../styles/modal-window.module.css";
 import { memo, useMemo } from "react";
 import { ModalWrapper } from "./ModalWrapper";
@@ -10,16 +10,14 @@ type Props = {
 };
 
 export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
-  const { avatar, correctAnswer, correct } = useMemo(() => {
-    return {
-      //todo remove return word
+  const { avatar, correctAnswer, correct } = useMemo(
+    () => ({
       avatar: data.avatar,
       correctAnswer: data.answers.find((answer) => answer.correct),
       correct: result === "passed",
-    };
-  }, [data.answers, data.avatar, result]);
-
-  // console.log("render ModalWindow");
+    }),
+    [data.answers, data.avatar, result]
+  );
 
   return (
     <ModalWrapper>

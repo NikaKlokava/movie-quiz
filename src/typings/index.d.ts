@@ -27,3 +27,5 @@ declare type Category = {
 };
 
 declare type Categories = { [id: string]: Category[] }; //todo
+
+declare type AppLogo = "small" | "big";

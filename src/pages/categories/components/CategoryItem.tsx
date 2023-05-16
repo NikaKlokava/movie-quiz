@@ -1,7 +1,6 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router";
-import { routeNames } from "../../../../router";
-import classes from "./category_item.module.css";
+import { routeNames } from "../../../router";
+import classes from "../styles/category_item.module.css";
 
 type CategoryItemType = {
   id: number;
@@ -10,12 +9,17 @@ type CategoryItemType = {
   avatar?: string;
 };
 
-const CategoryItem = ({ id, part, success, avatar }: CategoryItemType) => {
+export const CategoryItem = ({
+  id,
+  part,
+  success,
+  avatar,
+}: CategoryItemType) => {
   const navigate = useNavigate();
 
-  const handlePlayClick = useCallback(() => {
+  const handlePlayClick = () => {
     navigate(`${routeNames.Quiz}/${id}`);
-  }, [id, navigate]);
+  };
 
   return (
     <div className={classes.item}>
@@ -32,5 +36,3 @@ const CategoryItem = ({ id, part, success, avatar }: CategoryItemType) => {
     </div>
   );
 };
-
-export default CategoryItem;

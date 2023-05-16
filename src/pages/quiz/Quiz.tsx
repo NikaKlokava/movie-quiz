@@ -1,15 +1,15 @@
+import { Footer } from "../../shared/components/UI/footer/Footer";
 import { useCallback, useState } from "react";
-import Footer from "../../components/UI/footer/Footer";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { useQuiz } from "./hooks";
-import "./styles/quiz.css";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
 import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { useParams } from "react-router";
 import { StopQuiz } from "./components/StopQuiz";
+import cl from "./styles/quiz.module.css";
 
-const Quiz = () => {
+export const Quiz = () => {
   const params = useParams();
   const questions = useQuiz(params?.id);
 
@@ -18,42 +18,39 @@ const Quiz = () => {
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
   const [correctAnswers, setCorrect] = useState(0);
 
+  // need useCallback
   const handleQuestionResults = useCallback((res: QuestionResult) => {
     setCorrect(res === "passed" ? (prev) => prev + 1 : (prev) => prev);
     setResult(res);
   }, []);
 
-  const handleNextClick = useCallback(() => {
+  const handleNextClick = () => {
     setResult(undefined);
-
     setIndex((prev) => prev + 1);
-  }, []);
+  };
 
-  const endTimerTime = useCallback((res: QuestionResult) => {
+  const endTimerTime = (res: QuestionResult) => {
     setResult(res);
-  }, []);
+  };
 
-  const handleStopQuiz = useCallback((res: GameResult) => {
+  const handleStopQuiz = (res: GameResult) => {
     setGameResult(res);
-  }, []);
+  };
 
-  const restartQuiz = useCallback(() => {
+  const restartQuiz = () => {
     setResult(undefined);
     setGameResult(undefined);
     setIndex(0);
-  }, []);
+  };
 
+  //need useCallback
   const finishQuiz = useCallback((res: GameResult) => {
     setGameResult(res);
   }, []);
 
-  // if (questions === undefined) {
-  //   return null;
-  // }
-
   return (
-    <div className="quiz_page">
-      <header className="quiz_header">
+    <div className={cl.quiz_page}>
+      <header className={cl.quiz_header}>
         {!result && !gameResult && (
           <>
             <StopQuiz onStop={handleStopQuiz} />
@@ -61,7 +58,7 @@ const Quiz = () => {
           </>
         )}
       </header>
-      <main className="quiz_content">
+      <main className={cl.quiz_content}>
         <Question
           data={questions[index]}
           onAnswer={handleQuestionResults}
@@ -75,7 +72,7 @@ const Quiz = () => {
             onClose={handleNextClick}
           />
         )}
-        {gameResult && ( //todo
+        {gameResult && (
           <ModalWindowEndGame
             gameResult={gameResult}
             data={questions}
@@ -88,5 +85,3 @@ const Quiz = () => {
     </div>
   );
 };
-
-export default Quiz;

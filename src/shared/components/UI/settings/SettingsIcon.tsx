@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import { routeNames } from "../../../router";
+import { routeNames } from "../../../../router";
 import classes from "./settings.module.css";
 
-// TODO
-const SettingsIcon = () => {
+export const SettingsIcon = () => {
   return <Link to={routeNames.Settings} className={classes.settings_icon} />;
 };
-
-export default SettingsIcon;

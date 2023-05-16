@@ -1,23 +1,20 @@
-import Footer from "../../components/UI/footer/Footer";
+import { Footer } from "../../shared/components/UI/footer/Footer";
 import { Link } from "react-router-dom";
-import "./styles/settings.css";
-import SettingsContent from "./components/SettingsContent";
+import { SettingsContent } from "./components/SettingsContent";
+import { routeNames } from "../../router";
+import cl from "./styles/settings.module.css";
 
-const Settings = () => {
-  return (
-    <div className="settings_page">
-      <header className="settings_header">
-        <div className="settings_header_back">
-          <Link to="/" className="back_icon"></Link>
-          <p className="back_text">Settings</p>
-        </div>
-      </header>
-      <main className="settings_content">
-        <SettingsContent />
-      </main>
-      <Footer />
-    </div>
-  );
-};
-
-export default Settings;
+export const Settings = () => (
+  <div className={cl.settings_page}>
+    <header className={cl.settings_header}>
+      <div className={cl.settings_header_back}>
+        <Link to={routeNames.Home} className={cl.back_icon}></Link>
+        <p className={cl.back_text}>Settings</p>
+      </div>
+    </header>
+    <main className={cl.settings_content}>
+      <SettingsContent />
+    </main>
+    <Footer />
+  </div>
+);
