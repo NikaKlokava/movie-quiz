@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useSettingsContext } from "../../../shared/context";
 import cl from "../styles/timer.module.css";
 
@@ -6,7 +6,7 @@ type Props = {
   onTimeout: (res: QuestionResult) => void;
 };
 
-export const Timer = ({ onTimeout }: Props) => {
+export const Timer = memo(({ onTimeout }: Props) => {
   const settings = useSettingsContext();
   const [seconds, setSeconds] = useState(0);
 
@@ -40,4 +40,4 @@ export const Timer = ({ onTimeout }: Props) => {
       <div className={cl.timer_time}>{seconds}</div>
     </div>
   );
-};
+});

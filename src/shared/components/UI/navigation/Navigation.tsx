@@ -1,15 +1,13 @@
 import classes from "./navigation.module.css";
 import { useNavigate } from "react-router";
-import { useCallback } from "react";
-import { routeNames } from "../../../router";
+import { routeNames } from "../../../../router";
 
-// TODO
-const Navigation = () => {
+export const Navigation = () => {
   const navigate = useNavigate();
 
-  const handleHomeClick = useCallback(() => {
+  const handleHomeClick = () => {
     navigate(routeNames.Home);
-  }, [navigate]);
+  };
 
   return (
     <>
@@ -20,5 +18,3 @@ const Navigation = () => {
     </>
   );
 };
-
-export default Navigation;

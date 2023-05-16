@@ -1,10 +1,9 @@
-import AppTitle from "../app_title/AppTitle";
-import Navigation from "../navigation/Navigation";
-import SettingsIcon from "../settings/SettingsIcon";
+import { AppTitle } from "../app_title/AppTitle";
+import { Navigation } from "../navigation/Navigation";
+import { SettingsIcon } from "../settings/SettingsIcon";
 import cl from "./header.module.css";
 
-// TODO
-const Header = () => {
+export const Header = () => {
   return (
     <header className={cl.header}>
       <div className={cl.header_content}>
@@ -15,5 +14,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

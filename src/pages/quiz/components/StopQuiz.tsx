@@ -1,15 +1,14 @@
-import { useCallback } from "react";
+import { memo } from "react";
 import cl from "../styles/stop-quiz.module.css";
 
 type Props = {
   onStop: (res: GameResult) => void;
 };
 
-export const StopQuiz = ({ onStop }: Props) => {
-  const onStopQuizClick = useCallback(() => {
-    //todo
+export const StopQuiz = memo(({ onStop }: Props) => {
+  const onStopQuizClick = () => {
     onStop("stopped");
-  }, [onStop]);
+  };
 
   return <div className={cl.stop_quiz} onClick={onStopQuizClick}></div>;
-};
+});

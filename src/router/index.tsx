@@ -1,7 +1,7 @@
-import Categories from "../pages/categories/Categories";
-import Home from "../pages/home/Home";
-import Quiz from "../pages/quiz/Quiz";
-import Settings from "../pages/settings/Settings";
+import { Categories } from "../pages/categories/Categories";
+import { Home } from "../pages/home/Home";
+import { Quiz } from "../pages/quiz/Quiz";
+import { Settings } from "../pages/settings/Settings";
 import { Navigate } from "react-router";
 
 export enum routeNames {

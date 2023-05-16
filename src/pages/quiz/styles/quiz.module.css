@@ -1,0 +1,20 @@
+.quiz_page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+}
+
+.quiz_header {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.quiz_content {
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding: 40px;
+}

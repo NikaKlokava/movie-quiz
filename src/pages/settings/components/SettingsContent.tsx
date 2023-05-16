@@ -1,12 +1,12 @@
-import MyButton from "../../../components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/UI/button/MyButton";
 import { useState, useCallback } from "react";
 import {
   useSettingsContext,
   defaultSettingsValues,
 } from "../../../shared/context";
-import "../styles/settings.css";
+import cl from "../styles/settings_content.module.css";
 
-const SettongsContent = () => {
+export const SettingsContent = () => {
   const settings = useSettingsContext();
 
   const [volume, setVolume] = useState(settings.volume);
@@ -57,51 +57,51 @@ const SettongsContent = () => {
   }, [settings, active, time, volume]);
   return (
     <>
-      <div className="settings_content_volume">
-        <div className="volume_text">Volume</div>
+      <div className={cl.settings_content_volume}>
+        <div className={cl.volume_text}>Volume</div>
         <input
-          className="volume_slider"
+          className={cl.volume_slider}
           type="range"
           step="10"
           value={volume}
           onChange={handleVolumeChange}
         ></input>
       </div>
-      <div className="settings_content_timeon">
-        <div className="timeon_text">Time game</div>
-        <div className="timeon_choose">
+      <div className={cl.settings_content_timeon}>
+        <div className={cl.timeon_text}>Time game</div>
+        <div className={cl.timeon_choose}>
           <div
-            className={active ? "time_on active" : "time_on"}
+            className={active ? `${cl.time_on} ${cl.active}` : `${cl.time_on}`}
             onClick={handleActiveClick}
           >
             On
           </div>
           <div
-            className={active ? "time_off" : "time_off active"}
+            className={
+              active ? `${cl.time_off}` : `${cl.time_off} ${cl.active}`
+            }
             onClick={handleActiveClick}
           >
             Off
           </div>
         </div>
       </div>
-      <div className="settings_content_time">
-        <div className="time_text">Time to answer</div>
-        <div className="time_choose">
-          <button className="decrement" onClick={handleTimeDecrementPress}>
+      <div className={cl.settings_content_time}>
+        <div className={cl.time_text}>Time to answer</div>
+        <div className={cl.time_choose}>
+          <button className={cl.decrement} onClick={handleTimeDecrementPress}>
             -
           </button>
-          <p className="current_game_time">{time}</p>
-          <button className="increment" onClick={handleTimeIncrementPress}>
+          <p className={cl.current_game_time}>{time}</p>
+          <button className={cl.increment} onClick={handleTimeIncrementPress}>
             +
           </button>
         </div>
       </div>
-      <div className="settings_content_buttons">
+      <div className={cl.settings_content_buttons}>
         <MyButton text="Default" onClick={handleDefaultClick} />
         <MyButton text="Save" onClick={handleSavePress} />
       </div>
     </>
   );
 };
-
-export default SettongsContent;

@@ -2,7 +2,7 @@
   width: 30px;
   height: 30px;
   margin: 30px;
-  background-image: url('../../../assets/settings.svg');
+  background-image: url('../../../../assets/settings.svg');
   background-repeat: no-repeat;
   transition: 0.7s ease-in-out;
   cursor: pointer;

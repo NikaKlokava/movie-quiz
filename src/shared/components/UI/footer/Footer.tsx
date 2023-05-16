@@ -1,6 +1,7 @@
+import { memo } from "react";
 import classes from "../footer/footer.module.css";
 
-const Footer = () => {
+export const Footer = memo(() => {
   return (
     <footer className={classes.footer}>
       <p className={classes.footer_content}>Veranika Klokava</p>
@@ -12,5 +13,4 @@ const Footer = () => {
       </ul>
     </footer>
   );
-};
-export default Footer;
+});

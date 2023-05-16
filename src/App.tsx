@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routes } from "./router";
 import { SettingsContextProvider } from "./shared/context";
 import { ErrorBoundary } from "react-error-boundary";
-import { Error } from "./components/UI/error/Error";
+import { Error } from "./pages/error/Error";
 
 function App() {
   return (
