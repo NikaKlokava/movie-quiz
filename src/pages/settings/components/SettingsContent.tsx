@@ -5,8 +5,10 @@ import {
   defaultSettingsValues,
 } from "../../../shared/context";
 import cl from "../styles/settings_content.module.css";
+import { useTranslation } from "react-i18next";
 
 export const SettingsContent = () => {
+  const { t } = useTranslation();
   const settings = useSettingsContext();
 
   const [volume, setVolume] = useState(settings.volume);
@@ -58,7 +60,7 @@ export const SettingsContent = () => {
   return (
     <>
       <div className={cl.settings_content_volume}>
-        <div className={cl.volume_text}>Volume</div>
+        <div className={cl.volume_text}>{t("settings.volume")}</div>
         <input
           className={cl.volume_slider}
           type="range"
@@ -68,13 +70,13 @@ export const SettingsContent = () => {
         ></input>
       </div>
       <div className={cl.settings_content_timeon}>
-        <div className={cl.timeon_text}>Time game</div>
+        <div className={cl.timeon_text}>{t("settings.time-game")}</div>
         <div className={cl.timeon_choose}>
           <div
             className={active ? `${cl.time_on} ${cl.active}` : `${cl.time_on}`}
             onClick={handleActiveClick}
           >
-            On
+            {t("game-time.on")}
           </div>
           <div
             className={
@@ -82,12 +84,12 @@ export const SettingsContent = () => {
             }
             onClick={handleActiveClick}
           >
-            Off
+            {t("game-time.off")}
           </div>
         </div>
       </div>
       <div className={cl.settings_content_time}>
-        <div className={cl.time_text}>Time to answer</div>
+        <div className={cl.time_text}>{t("settings.timer")}</div>
         <div className={cl.time_choose}>
           <button className={cl.decrement} onClick={handleTimeDecrementPress}>
             -
@@ -98,9 +100,22 @@ export const SettingsContent = () => {
           </button>
         </div>
       </div>
+      <div className={cl.settings_content_language}>
+        <MyButton
+          text={t("language.en")}
+          className={cl.language_button}
+        />
+        <MyButton
+          text={t("language.ru")}
+          className={cl.language_button}
+        />
+      </div>
       <div className={cl.settings_content_buttons}>
-        <MyButton text="Default" onClick={handleDefaultClick} />
-        <MyButton text="Save" onClick={handleSavePress} />
+        <MyButton
+          text={t("setting-buttons.default")}
+          onClick={handleDefaultClick}
+        />
+        <MyButton text={t("setting-buttons.save")} onClick={handleSavePress} />
       </div>
     </>
   );

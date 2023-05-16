@@ -1,0 +1,31 @@
+{
+  "app-title-home": "Movie Quiz",
+  "app-title-categories": "MovieQuiz",
+  "quiz-title": {
+    "actors": "Actors Quiz",
+    "movies": "Movies Quiz"
+  },
+  "settings-title" : "settings",
+  "settings" : {
+    "volume" : "Volume",
+    "time-game" : "Time game",
+    "timer": "Time to answer"
+  },
+  "game-time" : {
+    "on" : "On",
+    "off" : "Off"
+  },
+  "language" : {
+    "en": "English",
+    "ru": "Russian"
+  },
+  "setting-buttons" : {
+    "default" : "default",
+    "save" : "save"
+  },
+  "categories-header" : {
+    "home" : "Home",
+    "categories": "Categories"
+  }
+
+}

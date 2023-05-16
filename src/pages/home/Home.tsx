@@ -5,8 +5,10 @@ import { Footer } from "../../shared/components/UI/footer/Footer";
 import { routeNames } from "../../router";
 import { useNavigate } from "react-router-dom";
 import cl from "./styles/home.module.css";
+import { useTranslation } from "react-i18next";
 
 export const Home = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -15,16 +17,16 @@ export const Home = () => {
         <SettingsIcon />
       </header>
       <main className={cl.home_content}>
-        <AppTitle title="Movie Quiz" size="big" />
+        <AppTitle title={t("app-title-home")} size="big" />
         <div className={cl.home_content_buttons}>
           <MyButton
-            text={"Actors Quiz"}
+            text={t("quiz-title.actors")}
             onClick={() => {
               navigate(`${routeNames.Categories}/1`);
             }}
           ></MyButton>
           <MyButton
-            text={"Movies Quiz"}
+            text={t("quiz-title.movies")}
             onClick={() => {
               navigate(`${routeNames.Categories}/2`);
             }}
