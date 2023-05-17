@@ -2,8 +2,8 @@
   "app-title-home": "Кино Игра",
   "app-title-categories": "КиноИгра",
   "quiz-title": {
-    "actors": "Актерская викторина",
-    "movies": "Кино викторина"
+    "actors": "Актеры",
+    "movies": "Фильмы"
   },
   "settings-title": "Настройки",
   "settings": {
@@ -17,8 +17,8 @@
   },
   "language": {
     "title": "Язык",
-    "en": "Английский",
-    "ru": "Русский"
+    "en": "Англ",
+    "ru": "Ру"
   },
   "setting-buttons": {
     "default": "По умолчанию",

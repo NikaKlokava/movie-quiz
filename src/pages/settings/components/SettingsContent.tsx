@@ -15,11 +15,14 @@ export const SettingsContent = () => {
   const [volume, setVolume] = useState(settings.volume);
   const [active, setActive] = useState(settings.active);
   const [time, setTime] = useState(settings.time);
+  const [language, setLanguage] = useState(settings.language);
 
   const handleDefaultClick = useCallback(() => {
     setActive(defaultSettingsValues.active);
     setVolume(defaultSettingsValues.volume);
     setTime(defaultSettingsValues.time);
+    setLanguage(defaultSettingsValues.language);
+    i18n.changeLanguage(defaultSettingsValues.language);
 
     settings.updateSettings?.(defaultSettingsValues);
   }, [settings]);
@@ -29,11 +32,11 @@ export const SettingsContent = () => {
   }, []);
 
   const handleEngLanguageClick = useCallback(() => {
-    i18n.changeLanguage("en");
+    setLanguage("en");
   }, []);
 
   const handleRuLanguageClick = useCallback(() => {
-    i18n.changeLanguage("ru");
+    setLanguage("ru");
   }, []);
 
   const handleVolumeChange = useCallback(
@@ -64,8 +67,10 @@ export const SettingsContent = () => {
       volume,
       active,
       time,
+      language,
     });
-  }, [settings, active, time, volume]);
+    i18n.changeLanguage(language);
+  }, [settings, volume, active, time, language]);
   return (
     <>
       <div className={cl.settings_content_volume}>
@@ -81,20 +86,20 @@ export const SettingsContent = () => {
       <div className={cl.settings_content_timeon}>
         <p className={cl.timeon_text}>{t("settings.time-game")}</p>
         <div className={cl.timeon_choose}>
-          <div
+          <p
             className={active ? `${cl.time_on} ${cl.active}` : `${cl.time_on}`}
             onClick={handleActiveClick}
           >
             {t("game-time.on")}
-          </div>
-          <div
+          </p>
+          <p
             className={
               active ? `${cl.time_off}` : `${cl.time_off} ${cl.active}`
             }
             onClick={handleActiveClick}
           >
             {t("game-time.off")}
-          </div>
+          </p>
         </div>
       </div>
       <div className={cl.settings_content_time}>
@@ -111,16 +116,28 @@ export const SettingsContent = () => {
       </div>
       <div className={cl.settings_content_language}>
         <p className={cl.language_title}>{t("language.title")}</p>
-        <MyButton
-          text={t("language.en")}
-          onClick={handleEngLanguageClick}
-          className={cl.languages}
-        />
-        <MyButton
-          text={t("language.ru")}
-          onClick={handleRuLanguageClick}
-          className={cl.languages}
-        />
+        <div className={cl.language_choose}>
+          <p
+            className={
+              language === "en"
+                ? `${cl.languages} ${cl.active}`
+                : `${cl.languages}`
+            }
+            onClick={handleEngLanguageClick}
+          >
+            {t("language.en")}
+          </p>
+          <p
+            className={
+              language === "ru"
+                ? `${cl.languages} ${cl.active}`
+                : `${cl.languages}`
+            }
+            onClick={handleRuLanguageClick}
+          >
+            {t("language.ru")}
+          </p>
+        </div>
       </div>
       <div className={cl.settings_content_buttons}>
         <MyButton

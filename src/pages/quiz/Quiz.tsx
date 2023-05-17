@@ -14,7 +14,6 @@ export const Quiz = () => {
   const params = useParams();
   const questions = useQuiz(params?.id);
   const settings = useSettingsContext();
-  // console.log(settings.active);
 
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);
