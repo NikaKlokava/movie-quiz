@@ -18,6 +18,7 @@
 
 .settings_header_back {
   min-width: 120px;
+  cursor: pointer;
 }
 
 .back_text {
@@ -28,7 +29,6 @@
 .back_icon {
   width: 30px;
   height: 30px;
-  cursor: pointer;
 }
 
 .back_icon {
