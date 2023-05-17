@@ -1,6 +1,7 @@
 .settings_content_volume,
 .settings_content_timeon,
-.settings_content_time {
+.settings_content_time,
+.settings_content_language {
 
   display: flex;
   flex-direction: column;
@@ -59,11 +60,31 @@
 }
 
 .increment:hover,
-.decrement:hover {
+.decrement:hover,
+.language_text:hover {
   opacity: 1;
 }
 
 .settings_content_buttons {
   display: flex;
   column-gap: 30px;
+}
+
+.settings_content_language {
+  display: flex;
+  row-gap: 10px;
+}
+
+.languages {
+  min-width: 140px;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0.7;
+  transition: 0.3s ease-in-out;
+}
+
+.languages:hover {
+  background-color: rgb(97, 100, 159);
+  color: beige;
+  opacity: 1;
 }

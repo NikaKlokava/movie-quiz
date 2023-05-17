@@ -16,8 +16,9 @@
     "off" : "Off"
   },
   "language" : {
-    "en": "English",
-    "ru": "Russian"
+    "title": "Language",
+    "en": "En",
+    "ru": "Ru"
   },
   "setting-buttons" : {
     "default" : "default",

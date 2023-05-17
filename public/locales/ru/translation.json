@@ -1,5 +1,5 @@
 {
-  "app-title": "Кино Игра",
+  "app-title-home": "Кино Игра",
   "app-title-categories": "КиноИгра",
   "quiz-title": {
     "actors": "Актерская викторина",
@@ -15,7 +15,8 @@
     "on": "Да",
     "off": "Нет"
   },
-  "language" : {
+  "language": {
+    "title": "Язык",
     "en": "Английский",
     "ru": "Русский"
   },

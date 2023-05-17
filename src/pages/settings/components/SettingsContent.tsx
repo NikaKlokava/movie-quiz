@@ -6,6 +6,7 @@ import {
 } from "../../../shared/context";
 import cl from "../styles/settings_content.module.css";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../i18n";
 
 export const SettingsContent = () => {
   const { t } = useTranslation();
@@ -25,6 +26,14 @@ export const SettingsContent = () => {
 
   const handleActiveClick = useCallback(() => {
     setActive((current) => !current);
+  }, []);
+
+  const handleEngLanguageClick = useCallback(() => {
+    i18n.changeLanguage("en");
+  }, []);
+
+  const handleRuLanguageClick = useCallback(() => {
+    i18n.changeLanguage("ru");
   }, []);
 
   const handleVolumeChange = useCallback(
@@ -60,7 +69,7 @@ export const SettingsContent = () => {
   return (
     <>
       <div className={cl.settings_content_volume}>
-        <div className={cl.volume_text}>{t("settings.volume")}</div>
+        <p className={cl.volume_text}>{t("settings.volume")}</p>
         <input
           className={cl.volume_slider}
           type="range"
@@ -70,7 +79,7 @@ export const SettingsContent = () => {
         ></input>
       </div>
       <div className={cl.settings_content_timeon}>
-        <div className={cl.timeon_text}>{t("settings.time-game")}</div>
+        <p className={cl.timeon_text}>{t("settings.time-game")}</p>
         <div className={cl.timeon_choose}>
           <div
             className={active ? `${cl.time_on} ${cl.active}` : `${cl.time_on}`}
@@ -89,7 +98,7 @@ export const SettingsContent = () => {
         </div>
       </div>
       <div className={cl.settings_content_time}>
-        <div className={cl.time_text}>{t("settings.timer")}</div>
+        <p className={cl.time_text}>{t("settings.timer")}</p>
         <div className={cl.time_choose}>
           <button className={cl.decrement} onClick={handleTimeDecrementPress}>
             -
@@ -101,13 +110,16 @@ export const SettingsContent = () => {
         </div>
       </div>
       <div className={cl.settings_content_language}>
+        <p className={cl.language_title}>{t("language.title")}</p>
         <MyButton
           text={t("language.en")}
-          className={cl.language_button}
+          onClick={handleEngLanguageClick}
+          className={cl.languages}
         />
         <MyButton
           text={t("language.ru")}
-          className={cl.language_button}
+          onClick={handleRuLanguageClick}
+          className={cl.languages}
         />
       </div>
       <div className={cl.settings_content_buttons}>
