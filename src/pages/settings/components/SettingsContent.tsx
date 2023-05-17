@@ -7,10 +7,13 @@ import {
 import cl from "../styles/settings_content.module.css";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../i18n";
+import { useNavigate } from "react-router";
+import { routeNames } from "../../../router";
 
 export const SettingsContent = () => {
   const { t } = useTranslation();
   const settings = useSettingsContext();
+  const navigate = useNavigate();
 
   const [volume, setVolume] = useState(settings.volume);
   const [active, setActive] = useState(settings.active);
@@ -70,7 +73,8 @@ export const SettingsContent = () => {
       language,
     });
     i18n.changeLanguage(language);
-  }, [settings, volume, active, time, language]);
+    navigate(routeNames.Home);
+  }, [settings, volume, active, time, language, navigate]);
   return (
     <>
       <div className={cl.settings_content_volume}>
