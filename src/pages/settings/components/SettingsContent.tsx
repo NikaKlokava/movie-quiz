@@ -5,24 +5,38 @@ import {
   defaultSettingsValues,
 } from "../../../shared/context";
 import cl from "../styles/settings_content.module.css";
+import { useTranslation } from "react-i18next";
+import i18n from "../../../i18n";
 
 export const SettingsContent = () => {
+  const { t } = useTranslation();
   const settings = useSettingsContext();
 
   const [volume, setVolume] = useState(settings.volume);
   const [active, setActive] = useState(settings.active);
   const [time, setTime] = useState(settings.time);
+  const [language, setLanguage] = useState(settings.language);
 
   const handleDefaultClick = useCallback(() => {
     setActive(defaultSettingsValues.active);
     setVolume(defaultSettingsValues.volume);
     setTime(defaultSettingsValues.time);
+    setLanguage(defaultSettingsValues.language);
+    i18n.changeLanguage(defaultSettingsValues.language);
 
     settings.updateSettings?.(defaultSettingsValues);
   }, [settings]);
 
   const handleActiveClick = useCallback(() => {
     setActive((current) => !current);
+  }, []);
+
+  const handleEngLanguageClick = useCallback(() => {
+    setLanguage("en");
+  }, []);
+
+  const handleRuLanguageClick = useCallback(() => {
+    setLanguage("ru");
   }, []);
 
   const handleVolumeChange = useCallback(
@@ -53,12 +67,14 @@ export const SettingsContent = () => {
       volume,
       active,
       time,
+      language,
     });
-  }, [settings, active, time, volume]);
+    i18n.changeLanguage(language);
+  }, [settings, volume, active, time, language]);
   return (
     <>
       <div className={cl.settings_content_volume}>
-        <div className={cl.volume_text}>Volume</div>
+        <p className={cl.volume_text}>{t("settings.volume")}</p>
         <input
           className={cl.volume_slider}
           type="range"
@@ -68,26 +84,26 @@ export const SettingsContent = () => {
         ></input>
       </div>
       <div className={cl.settings_content_timeon}>
-        <div className={cl.timeon_text}>Time game</div>
+        <p className={cl.timeon_text}>{t("settings.time-game")}</p>
         <div className={cl.timeon_choose}>
-          <div
+          <p
             className={active ? `${cl.time_on} ${cl.active}` : `${cl.time_on}`}
             onClick={handleActiveClick}
           >
-            On
-          </div>
-          <div
+            {t("game-time.on")}
+          </p>
+          <p
             className={
               active ? `${cl.time_off}` : `${cl.time_off} ${cl.active}`
             }
             onClick={handleActiveClick}
           >
-            Off
-          </div>
+            {t("game-time.off")}
+          </p>
         </div>
       </div>
       <div className={cl.settings_content_time}>
-        <div className={cl.time_text}>Time to answer</div>
+        <p className={cl.time_text}>{t("settings.timer")}</p>
         <div className={cl.time_choose}>
           <button className={cl.decrement} onClick={handleTimeDecrementPress}>
             -
@@ -98,9 +114,37 @@ export const SettingsContent = () => {
           </button>
         </div>
       </div>
+      <div className={cl.settings_content_language}>
+        <p className={cl.language_title}>{t("language.title")}</p>
+        <div className={cl.language_choose}>
+          <p
+            className={
+              language === "en"
+                ? `${cl.languages} ${cl.active}`
+                : `${cl.languages}`
+            }
+            onClick={handleEngLanguageClick}
+          >
+            {t("language.en")}
+          </p>
+          <p
+            className={
+              language === "ru"
+                ? `${cl.languages} ${cl.active}`
+                : `${cl.languages}`
+            }
+            onClick={handleRuLanguageClick}
+          >
+            {t("language.ru")}
+          </p>
+        </div>
+      </div>
       <div className={cl.settings_content_buttons}>
-        <MyButton text="Default" onClick={handleDefaultClick} />
-        <MyButton text="Save" onClick={handleSavePress} />
+        <MyButton
+          text={t("setting-buttons.default")}
+          onClick={handleDefaultClick}
+        />
+        <MyButton text={t("setting-buttons.save")} onClick={handleSavePress} />
       </div>
     </>
   );

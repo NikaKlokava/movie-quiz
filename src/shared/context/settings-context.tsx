@@ -10,6 +10,7 @@ type SettingsContextValuesType = {
   time: number;
   active: boolean;
   volume: number;
+  language: string;
 };
 
 type SettingsContextType = SettingsContextValuesType & {
@@ -20,10 +21,12 @@ export const defaultSettingsValues = {
   time: 20,
   active: false,
   volume: 40,
+  language: "en",
 };
 
-export const SettingsContext =
-  createContext<SettingsContextType>(defaultSettingsValues);
+export const SettingsContext = createContext<SettingsContextType>(
+  defaultSettingsValues
+);
 
 type SettingsContextProviderType = {
   children: React.ReactNode;
