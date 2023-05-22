@@ -22,13 +22,13 @@ export const Home = () => {
           <MyButton
             text={t("quiz-title.actors")}
             onClick={() => {
-              navigate(`${routeNames.Categories}/1`);
+              navigate(`${routeNames.Categories}/0`);
             }}
           ></MyButton>
           <MyButton
             text={t("quiz-title.movies")}
             onClick={() => {
-              navigate(`${routeNames.Categories}/2`);
+              navigate(`${routeNames.Categories}/1`);
             }}
           ></MyButton>
         </div>
