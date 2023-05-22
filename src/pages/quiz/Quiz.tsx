@@ -12,8 +12,12 @@ import { useSettingsContext } from "../../shared/context";
 
 export const Quiz = () => {
   const params = useParams();
-  const questions = useQuiz(params?.id);
+  const questions = useQuiz(params.id);
   const settings = useSettingsContext();
+
+  // useEffect(() => {
+  //   questions.loadData();
+  // }, []);
 
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);

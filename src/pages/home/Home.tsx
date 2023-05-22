@@ -6,10 +6,17 @@ import { routeNames } from "../../router";
 import { useNavigate } from "react-router-dom";
 import cl from "./styles/home.module.css";
 import { useTranslation } from "react-i18next";
+import { useHome } from "./hooks";
+import { useEffect } from "react";
 
 export const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const home = useHome();
+
+  useEffect(() => {
+    home.loadData();
+  }, []);
 
   return (
     <div className={cl.home_page}>
@@ -19,18 +26,16 @@ export const Home = () => {
       <main className={cl.home_content}>
         <AppTitle title={t("app-title-home")} size="big" />
         <div className={cl.home_content_buttons}>
-          <MyButton
-            text={t("quiz-title.actors")}
-            onClick={() => {
-              navigate(`${routeNames.Categories}/0`);
-            }}
-          ></MyButton>
-          <MyButton
-            text={t("quiz-title.movies")}
-            onClick={() => {
-              navigate(`${routeNames.Categories}/1`);
-            }}
-          ></MyButton>
+          {!home.isLoading &&
+            home.data.map((quiz: any) => (
+              <MyButton
+                key={quiz.id}
+                text={quiz.name}
+                onClick={() => {
+                  navigate(`${routeNames.Categories}/${quiz.id}`);
+                }}
+              />
+            ))}
         </div>
       </main>
       <Footer />

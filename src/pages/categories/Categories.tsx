@@ -7,13 +7,13 @@ import cl from "./styles/categories.module.css";
 import { memo, useEffect } from "react";
 
 export const Categories = memo(() => {
-  console.log("render Categories");
   const params = useParams();
 
   const categories = useCategories(params.id);
 
   useEffect(() => {
     categories.loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

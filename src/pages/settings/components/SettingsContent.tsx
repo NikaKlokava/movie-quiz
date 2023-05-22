@@ -72,6 +72,7 @@ export const SettingsContent = () => {
       time,
       language,
     });
+    console.log(language);
     i18n.changeLanguage(language);
     navigate(routeNames.Home);
   }, [settings, volume, active, time, language, navigate]);

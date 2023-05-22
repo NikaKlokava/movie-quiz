@@ -1,3 +1,4 @@
+import { memo } from "react";
 import cl from "./title.module.css";
 
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
   title: string;
 };
 
-export const AppTitle = ({ size, title }: Props) => {
+export const AppTitle = memo(({ size, title }: Props) => {
   const isLogoBig = size === "big";
 
   return (
@@ -21,4 +22,4 @@ export const AppTitle = ({ size, title }: Props) => {
       <div>{title}</div>
     </div>
   );
-};
+});
