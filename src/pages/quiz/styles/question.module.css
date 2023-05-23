@@ -1,0 +1,23 @@
+.question_title {
+  color: #ffe4c4;
+  font-size: 20px;
+  font-family: 'Arvo', serif;
+  margin-bottom: 15px;
+}
+
+.question_picture {
+  width: 250px;
+  height: 300px;
+  border: 1px solid rgb(255, 228, 196);
+  background-size: cover;
+  border-radius: 30px;
+  align-self: center;
+}
+
+.answers {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 10px
+}

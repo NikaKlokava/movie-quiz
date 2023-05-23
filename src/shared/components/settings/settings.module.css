@@ -1,0 +1,14 @@
+.settings_icon {
+  width: 30px;
+  height: 30px;
+  margin: 30px;
+  background-image: url('../../../assets/settings.svg');
+  background-repeat: no-repeat;
+  transition: 0.7s ease-in-out;
+  cursor: pointer;
+  align-self: center;
+}
+
+.settings_icon:hover {
+  transform: rotatez(0.5turn);
+}
