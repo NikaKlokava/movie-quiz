@@ -8,7 +8,6 @@ import { memo, useEffect } from "react";
 
 export const Categories = memo(() => {
   const params = useParams();
-
   const categories = useCategories(params.id);
 
   useEffect(() => {
@@ -21,15 +20,9 @@ export const Categories = memo(() => {
       <Header />
       <main className={cl.categories_list_container}>
         <div className={cl.categories_list}>
-          {categories.loading &&
+          {!categories.loading &&
             categories.data.map((cat: any) => (
-              <CategoryItem
-                key={cat.name}
-                part={cat.name}
-                success={`${cat.success}/${cat.total}`}
-                avatar={cat.avatar}
-                id={cat.id}
-              />
+              <CategoryItem key={cat} id={cat} />
             ))}
         </div>
       </main>

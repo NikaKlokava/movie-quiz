@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const Question = memo(({ data, onAnswer, onFinish }: Props) => {
+  console.log(data);
+
   const onAnswerClick = (answer: any) => {
     onAnswer(answer.correct ? "passed" : "failed");
   };
@@ -27,13 +29,14 @@ export const Question = memo(({ data, onAnswer, onFinish }: Props) => {
         style={{ backgroundImage: `url(${data?.avatar})` }}
       ></div>
       <div className={cl.answers}>
-        {data?.answers.map((answer) => (
-          <MyButton
-            text={answer.value}
-            key={answer.value}
-            onClick={() => onAnswerClick(answer)}
-          />
-        ))}
+        {data.answers &&
+          data.answers.map((answer) => (
+            <MyButton
+              text={answer.value}
+              key={answer.value}
+              onClick={() => onAnswerClick(answer)}
+            />
+          ))}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ declare type Answer = {
 };
 
 declare type Question = {
-  id: number;
+  id?: number;
   question: string;
   avatar: string;
   answers: Answer[];

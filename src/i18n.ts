@@ -15,7 +15,7 @@ i18n
       loadPath, // https://github.com/i18next/i18next-http-backend
     },
     fallbackLng: "en",
-    debug: true,
+    // debug: true,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

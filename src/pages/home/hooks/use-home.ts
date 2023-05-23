@@ -3,22 +3,24 @@ import { useSettingsContext } from "../../../shared/context";
 
 export const useHome = () => {
   const settings = useSettingsContext();
-  const lang = settings.language;
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState<any>(false);
+  const [data, setData] = useState<any>([]);
 
   const loadData = async () => {
+    setIsLoading(true);
     try {
-      const urlQuizzes = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/categories/${lang}.json`;
-      const quizzes = await (await fetch(urlQuizzes)).json();
-      setData(quizzes);
-      setIsLoading(true);
+      const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/categories/${settings.language}.json`;
+      const res = await fetch(url);
+      const json = await res.json();
+
+      setData(json);
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
+
   return { data, isLoading, loadData };
 };

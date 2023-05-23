@@ -1,30 +1,27 @@
 import { useState } from "react";
+import { isUndefined } from "lodash";
 
 export const useCategories = (id: string | undefined) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<number[]>([]);
 
   const loadData = async () => {
-    try {
-      const category: any = [];
-      const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/categories/${id}.json`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const numberOfGames = data.games;
+    if (isUndefined(id)) return;
 
-      for (let i = 0; i < numberOfGames.length; i++) {
-        const gameUrl = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/games/${numberOfGames[i]}_en.json`;
-        const response = await fetch(gameUrl);
-        const game = await response.json();
-        category.push(game);
-      }
-      setData(category);
-      setLoading(true);
+    setLoading(true);
+
+    try {
+      const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/categories/${id}.json`;
+      const res = await fetch(url);
+      const json = await res.json();
+
+      setData(json.games);
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   };
+
   return { data, loading, loadData };
 };
