@@ -2,7 +2,7 @@ import { useState } from "react";
 import { isUndefined } from "lodash";
 
 export const useQuiz = (question: any) => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<any>([]);
 
   const loadData = async (index: number | undefined) => {

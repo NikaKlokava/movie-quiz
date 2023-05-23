@@ -1,4 +1,4 @@
-import { MyButton } from "../../../shared/components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/button/MyButton";
 import cl from "../styles/modal-window.module.css";
 import { memo, useMemo } from "react";
 import { ModalWrapper } from "./ModalWrapper";

@@ -1,7 +1,7 @@
-import { AppTitle } from "../../shared/components/UI/app_title/AppTitle";
-import { SettingsIcon } from "../../shared/components/UI/settings/SettingsIcon";
-import { MyButton } from "../../shared/components/UI/button/MyButton";
-import { Footer } from "../../shared/components/UI/footer/Footer";
+import { AppTitle } from "../../shared/components/app_title/AppTitle";
+import { SettingsIcon } from "../../shared/components/settings/SettingsIcon";
+import { MyButton } from "../../shared/components/button/MyButton";
+import { Footer } from "../../shared/components/footer/Footer";
 import { routeNames } from "../../router";
 import { useNavigate } from "react-router-dom";
 import cl from "./styles/home.module.css";
@@ -16,6 +16,7 @@ export const Home = () => {
 
   useEffect(() => {
     home.loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

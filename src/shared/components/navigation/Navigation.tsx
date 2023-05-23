@@ -1,6 +1,6 @@
 import classes from "./navigation.module.css";
 import { useNavigate } from "react-router";
-import { routeNames } from "../../../../router";
+import { routeNames } from "../../../router";
 import { useTranslation } from "react-i18next";
 
 export const Navigation = () => {

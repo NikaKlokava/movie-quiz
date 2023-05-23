@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { MyButton } from "../../../shared/components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/button/MyButton";
 import { routeNames } from "../../../router";
 import cl from "../styles/modal-end-game.module.css";
 import { ModalWrapper } from "./ModalWrapper";

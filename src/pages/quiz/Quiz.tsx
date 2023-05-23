@@ -1,4 +1,4 @@
-import { Footer } from "../../shared/components/UI/footer/Footer";
+import { Footer } from "../../shared/components/footer/Footer";
 import { memo, useCallback, useEffect, useState } from "react";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { useQuiz } from "./hooks";
@@ -9,6 +9,7 @@ import { StopQuiz } from "./components/StopQuiz";
 import cl from "./styles/quiz.module.css";
 import { useSettingsContext } from "../../shared/context";
 import { useLocation } from "react-router-dom";
+import { Loader } from "../../shared/components/loader";
 
 export const Quiz = memo(() => {
   const settings = useSettingsContext();
@@ -49,7 +50,7 @@ export const Quiz = memo(() => {
   const restartQuiz = () => {
     setResult(undefined);
     setGameResult(undefined);
-    setIndex(location.state[0]);
+    setIndex(0);
   };
 
   //need useCallback
@@ -68,7 +69,9 @@ export const Quiz = memo(() => {
         )}
       </header>
       <main className={cl.quiz_content}>
-        {!question.loading && (
+        {question.loading ? (
+          <Loader />
+        ) : (
           <Question
             data={question.data}
             questionNum={numberOfQuestion}
