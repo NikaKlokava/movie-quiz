@@ -13,15 +13,18 @@ import { useLocation } from "react-router-dom";
 export const Quiz = memo(() => {
   const settings = useSettingsContext();
   const location = useLocation();
-  const question = useQuiz(location.state[0]);
+  const question = useQuiz(location.state);
 
   const [result, setResult] = useState<QuestionResult | undefined>();
-  const [index, setIndex] = useState(location.state[0]);
+  const [index, setIndex] = useState(0);
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
-  const [correctAnswers, setCorrect] = useState(0);
+  const [correctAnswers, setCorrect] = useState<number>(0);
+
+  const numberOfQuestion = location.state[index];
 
   useEffect(() => {
-    question.loadData(index);
+    question.loadData(numberOfQuestion);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
   // need useCallback
@@ -68,6 +71,7 @@ export const Quiz = memo(() => {
         {!question.loading && (
           <Question
             data={question.data}
+            questionNum={numberOfQuestion}
             onAnswer={handleQuestionResults}
             onFinish={finishQuiz}
           />
@@ -82,7 +86,7 @@ export const Quiz = memo(() => {
         {gameResult && (
           <ModalWindowEndGame
             gameResult={gameResult}
-            data={question.data}
+            total={location.state.length}
             correctAnswers={correctAnswers}
             onRestartPress={restartQuiz}
           />

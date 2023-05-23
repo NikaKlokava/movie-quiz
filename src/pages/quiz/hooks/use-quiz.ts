@@ -5,10 +5,11 @@ export const useQuiz = (question: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
 
-  const loadData = async (index: number) => {
+  const loadData = async (index: number | undefined) => {
     if (isUndefined(question)) return;
-    console.log("index", index);
+
     setLoading(true);
+
     try {
       const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/questions/${index}/en.json`;
       const res = await fetch(url);

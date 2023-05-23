@@ -7,18 +7,18 @@ import { memo } from "react";
 
 type Props = {
   gameResult: GameResult;
-  data: Question[];
+  total: number;
   onRestartPress: () => void;
   correctAnswers: number;
 };
 
 export const ModalWindowEndGame = memo(
-  ({ gameResult, data, correctAnswers, onRestartPress }: Props) => {
+  ({ gameResult, total, correctAnswers, onRestartPress }: Props) => {
     const navigate = useNavigate();
 
     const isPlayStopped = gameResult === "stopped";
     const isNoCorrectAnswers = correctAnswers === 0;
-    const totalQuestionsNumber = data.length;
+    const totalQuestionsNumber = total;
     const statusLabel =
       isPlayStopped || isNoCorrectAnswers ? "Game over" : "Congratulations!";
     const descriptionLabel = isPlayStopped
