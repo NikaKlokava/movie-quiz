@@ -4,28 +4,30 @@ declare type Answer = {
 };
 
 declare type Question = {
-  id?: number;
+  id: number;
   question: string;
   avatar: string;
   answers: Answer[];
 };
 
-declare type Quiz = Question[];
-
-declare type Quizzes = { [id: string]: Quiz };
-
 declare type QuestionResult = "passed" | "failed" | "timeout";
 
 declare type GameResult = "stopped" | "finished";
 
-declare type Category = {
-  id: number;
+declare type CategoryData = {
   name: string;
   success: number;
   total: number;
-  avatar?: string;
+  avatar: string;
+  questions: Array<number>;
 };
 
-declare type Categories = { [id: string]: Category[] }; //todo
+declare type CategoriesData = number[];
+
+declare type Quiz = {
+  id: number;
+  name: string;
+};
+declare type HomeData = Quiz[];
 
 declare type AppLogo = "small" | "big";

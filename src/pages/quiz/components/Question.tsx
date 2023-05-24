@@ -11,7 +11,7 @@ type Props = {
 
 export const Question = memo(
   ({ data, questionNum, onAnswer, onFinish }: Props) => {
-    const onAnswerClick = (answer: any) => {
+    const onAnswerClick = (answer: Answer) => {
       onAnswer(answer.correct ? "passed" : "failed");
     };
 
@@ -23,10 +23,10 @@ export const Question = memo(
 
     return (
       <>
-        <div className={cl.question_title}>{data?.question} </div>
+        <div className={cl.question_title}>{data.question} </div>
         <div
           className={cl.question_picture}
-          style={{ backgroundImage: `url(${data?.avatar})` }}
+          style={{ backgroundImage: `url(${data.avatar})` }}
         ></div>
         <div className={cl.answers}>
           {data.answers &&
