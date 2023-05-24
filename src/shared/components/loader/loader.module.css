@@ -1,0 +1,40 @@
+.loader_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader_title {
+  align-self: center;
+  text-align: center;
+  color: #f5f5dc;
+  font-size: 25px;
+  font-family: 'Arvo', serif;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px dotted bisque;
+  animation: spinner 1.5s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .loading-spinner { */
+/* width: 200px; */
+/* height: 200px; */
+/* border: 10px solid red; */
+/* Light grey */
+/* border-top: 5px solid red; */
+/* Black */
+/* border-radius: 50%; */
+/* animation: spinner 1.5s linear infinite; */
+/* } */

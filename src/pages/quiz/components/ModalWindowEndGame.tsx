@@ -1,28 +1,32 @@
 import { useNavigate } from "react-router";
-import { MyButton } from "../../../shared/components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/button/MyButton";
 import { routeNames } from "../../../router";
 import cl from "../styles/modal-end-game.module.css";
 import { ModalWrapper } from "./ModalWrapper";
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   gameResult: GameResult;
-  data: Question[];
+  total: number;
   onRestartPress: () => void;
   correctAnswers: number;
 };
 
 export const ModalWindowEndGame = memo(
-  ({ gameResult, data, correctAnswers, onRestartPress }: Props) => {
+  ({ gameResult, total, correctAnswers, onRestartPress }: Props) => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const isPlayStopped = gameResult === "stopped";
     const isNoCorrectAnswers = correctAnswers === 0;
-    const totalQuestionsNumber = data.length;
+    const totalQuestionsNumber = total;
     const statusLabel =
-      isPlayStopped || isNoCorrectAnswers ? "Game over" : "Congratulations!";
+      isPlayStopped || isNoCorrectAnswers
+        ? t("game-result.fail")
+        : t("game-result.win");
     const descriptionLabel = isPlayStopped
-      ? "Play again?"
+      ? t("play-again.title")
       : `${correctAnswers} / ${totalQuestionsNumber}`;
 
     const handleHomeClick = () => {
@@ -50,12 +54,12 @@ export const ModalWindowEndGame = memo(
         <div className={cl.end_subscribe}>{descriptionLabel}</div>
         <div className={cl.end_buttons_conainer}>
           <MyButton
-            text={isPlayStopped ? " No" : "Home"}
+            text={isPlayStopped ? t("play-again.no") : t("go-back.to-home")}
             className={cl.modal_buttons}
             onClick={handleHomeClick}
           />
           <MyButton
-            text={isPlayStopped ? "Yes" : "List of quizzes"}
+            text={isPlayStopped ? t("play-again.yes") : t("go-back.to-quizzes")}
             className={cl.modal_buttons}
             onClick={handleYesOrNextClick}
           />

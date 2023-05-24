@@ -1,4 +1,4 @@
-import { MyButton } from "../../../shared/components/UI/button/MyButton";
+import { MyButton } from "../../../shared/components/button/MyButton";
 import { useState, useCallback } from "react";
 import {
   useSettingsContext,
@@ -72,6 +72,7 @@ export const SettingsContent = () => {
       time,
       language,
     });
+
     i18n.changeLanguage(language);
     navigate(routeNames.Home);
   }, [settings, volume, active, time, language, navigate]);

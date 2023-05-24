@@ -1,38 +1,53 @@
+import { memo, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
+import { useSettingsContext } from "../../../shared/context";
+import { useServerData } from "../../../shared/hooks";
 import classes from "../styles/category_item.module.css";
+import { Loader } from "../../../shared/components/loader";
+import { useTranslation } from "react-i18next";
 
-type CategoryItemType = {
+type Props = {
   id: number;
-  part: string;
-  success: string;
-  avatar?: string;
 };
 
-export const CategoryItem = ({
-  id,
-  part,
-  success,
-  avatar,
-}: CategoryItemType) => {
+export const CategoryItem = memo(({ id }: Props) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+  const settings = useSettingsContext();
+
+  const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
+  
+  const { loadData, isLoading, data } = useServerData(url);
+  const { name, success, total, avatar, questions } = data;
+
+  useEffect(() => {
+    loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handlePlayClick = () => {
-    navigate(`${routeNames.Quiz}/${id}`);
+    navigate(`${routeNames.Quiz}/${id}`, { state: questions });
   };
 
   return (
     <div className={classes.item}>
-      <div className={classes.item_title}>{part}</div>
-      <div className={classes.item_status}>{success}</div>
-      <div
-        className={classes.item_avatar}
-        style={{ backgroundImage: `url(${avatar})` }}
-      ></div>
-      <div className={classes.item_play} onClick={handlePlayClick}>
-        <div className={classes.item_play_icon}></div>
-        <div className={classes.item_play_text}>Play</div>
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={classes.item_title}>{name}</div>
+          <div className={classes.item_status}>{`${success} / ${total}`}</div>
+          <div
+            className={classes.item_avatar}
+            style={{ backgroundImage: `url(${avatar})` }}
+          ></div>
+          <div className={classes.item_play} onClick={handlePlayClick}>
+            <div className={classes.item_play_icon}></div>
+            <div className={classes.item_play_text}>{t("play-game")}</div>
+          </div>
+        </>
+      )}
     </div>
   );
-};
+});

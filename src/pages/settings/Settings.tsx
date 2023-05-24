@@ -1,4 +1,4 @@
-import { Footer } from "../../shared/components/UI/footer/Footer";
+import { Footer } from "../../shared/components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { SettingsContent } from "./components/SettingsContent";
 import { routeNames } from "../../router";

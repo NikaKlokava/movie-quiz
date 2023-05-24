@@ -2,18 +2,18 @@ import { useState } from "react";
 import { isUndefined } from "lodash";
 import { useSettingsContext } from "../../../shared/context";
 
-export const useQuiz = (question: any) => {
+export const useCategory = (id: string | number | undefined) => {
   const settings = useSettingsContext();
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<any>({});
 
-  const loadData = async (index: number | undefined) => {
-    if (isUndefined(question)) return;
+  const loadData = async () => {
+    if (isUndefined(id)) return;
 
     setLoading(true);
 
     try {
-      const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.language}.json`;
+      const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 
@@ -24,5 +24,6 @@ export const useQuiz = (question: any) => {
       setLoading(false);
     }
   };
+
   return { data, loading, loadData };
 };
