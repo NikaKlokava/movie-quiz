@@ -24,10 +24,13 @@ export const Question = memo(
     return (
       <>
         <div className={cl.question_title}>{data.question} </div>
-        <div
-          className={cl.question_picture}
-          style={{ backgroundImage: `url(${data.avatar})` }}
-        ></div>
+        <div className={cl.question_picture}>
+          <img
+            className={cl.question_image}
+            alt="quiz_picture"
+            src={`${data.avatar}`}
+          />
+        </div>
         <div className={cl.answers}>
           {data.answers &&
             data.answers.map((answer) => (

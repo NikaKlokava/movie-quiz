@@ -19,7 +19,7 @@ export const Quiz = memo(() => {
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
   const [correctAnswers, setCorrect] = useState<number>(0);
 
-  const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/questions/${location.state[index]}/${settings.language}.json`;
 
   const { loadData, isLoading, data } = useServerData(url);
 
