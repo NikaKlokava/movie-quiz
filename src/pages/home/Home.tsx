@@ -8,6 +8,7 @@ import cl from "./styles/home.module.css";
 import { useTranslation } from "react-i18next";
 import { useHome } from "./hooks";
 import { useEffect } from "react";
+import { Loader } from "../../shared/components/loader";
 
 export const Home = () => {
   const { t } = useTranslation();
@@ -27,7 +28,9 @@ export const Home = () => {
       <main className={cl.home_content}>
         <AppTitle title={t("app-title-home")} size="big" />
         <div className={cl.home_content_buttons}>
-          {!home.isLoading &&
+          {home.isLoading ? (
+            <Loader />
+          ) : (
             home.data.map((quiz: any) => (
               <MyButton
                 key={quiz.id}
@@ -36,7 +39,8 @@ export const Home = () => {
                   navigate(`${routeNames.Categories}/${quiz.id}`);
                 }}
               />
-            ))}
+            ))
+          )}
         </div>
       </main>
       <Footer />

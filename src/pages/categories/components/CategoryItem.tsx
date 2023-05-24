@@ -5,7 +5,7 @@ import { useCategory } from "../hooks/use-category";
 import classes from "../styles/category_item.module.css";
 
 type CategoryItemType = {
-  id: number | string | undefined;
+  id: number;
 };
 
 export const CategoryItem = memo(({ id }: CategoryItemType) => {

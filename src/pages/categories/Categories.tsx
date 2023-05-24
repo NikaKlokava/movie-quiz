@@ -20,12 +20,15 @@ export const Categories = memo(() => {
     <div className={cl.categories_page}>
       <Header />
       <main className={cl.categories_list_container}>
-        {categories.loading && <Loader />}
-        <div className={cl.categories_list}>
-          {categories.data.map((cat: any) => (
-            <CategoryItem key={cat} id={cat} />
-          ))}
-        </div>
+        {categories.loading ? (
+          <Loader />
+        ) : (
+          <div className={cl.categories_list}>
+            {categories.data.map((cat: any) => (
+              <CategoryItem key={cat} id={cat} />
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
     </div>

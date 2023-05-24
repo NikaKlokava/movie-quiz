@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { isUndefined } from "lodash";
+import { useSettingsContext } from "../../../shared/context";
 
 export const useQuiz = (question: any) => {
-  const [loading, setLoading] = useState<boolean>(true);
+  const settings = useSettingsContext();
+  const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
 
   const loadData = async (index: number | undefined) => {
@@ -11,7 +13,7 @@ export const useQuiz = (question: any) => {
     setLoading(true);
 
     try {
-      const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/questions/${index}/en.json`;
+      const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 
