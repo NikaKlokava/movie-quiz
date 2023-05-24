@@ -29,11 +29,11 @@ const createQuiz = (numberOfQuestions: number) =>
     question: `${mockQuestion.question} - ${i}`,
   }));
 
-export const quizzes: Quizzes = {
-  "0": createQuiz(3),
-  "1": createQuiz(2),
-  "2": createQuiz(5),
-  "3": createQuiz(3),
-  "4": createQuiz(1),
-  "5": createQuiz(2),
+export const quizzes: any = {
+  // "0": createQuiz(3),
+  // "1": createQuiz(2),
+  // "2": createQuiz(5),
+  // "3": createQuiz(3),
+  // "4": createQuiz(1),
+  // "5": createQuiz(2),
 };

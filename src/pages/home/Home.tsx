@@ -6,16 +6,20 @@ import { routeNames } from "../../router";
 import { useNavigate } from "react-router-dom";
 import cl from "./styles/home.module.css";
 import { useTranslation } from "react-i18next";
-import { useHome } from "./hooks";
 import { useEffect } from "react";
+import { Loader } from "../../shared/components/loader";
+import { useServerData } from "../../shared/hooks";
+import { useSettingsContext } from "../../shared/context/settings-context";
 
 export const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const home = useHome();
+  const settings = useSettingsContext();
+  const url = `${process.env.REACT_APP_URL}/categories/${settings.language}.json`;
+  const { loadData, isLoading, data } = useServerData(url);
 
   useEffect(() => {
-    home.loadData();
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,8 +31,10 @@ export const Home = () => {
       <main className={cl.home_content}>
         <AppTitle title={t("app-title-home")} size="big" />
         <div className={cl.home_content_buttons}>
-          {!home.isLoading &&
-            home.data.map((quiz: any) => (
+          {isLoading ? (
+            <Loader />
+          ) : (
+            data.map((quiz: Quiz) => (
               <MyButton
                 key={quiz.id}
                 text={quiz.name}
@@ -36,7 +42,8 @@ export const Home = () => {
                   navigate(`${routeNames.Categories}/${quiz.id}`);
                 }}
               />
-            ))}
+            ))
+          )}
         </div>
       </main>
       <Footer />

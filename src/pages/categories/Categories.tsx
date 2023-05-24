@@ -1,18 +1,19 @@
 import { Header } from "../../shared/components/header/Header";
 import { Footer } from "../../shared/components/footer/Footer";
 import { CategoryItem } from "./components/CategoryItem";
-import { useCategories } from "./hooks";
 import { useParams } from "react-router-dom";
 import cl from "./styles/categories.module.css";
 import { memo, useEffect } from "react";
 import { Loader } from "../../shared/components/loader";
+import { useServerData } from "../../shared/hooks";
 
 export const Categories = memo(() => {
   const params = useParams();
-  const categories = useCategories(params.id);
+  const url = `${process.env.REACT_APP_URL}/categories/${params.id}.json`;
+  const { loadData, isLoading, data } = useServerData(url);
 
   useEffect(() => {
-    categories.loadData();
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,12 +21,15 @@ export const Categories = memo(() => {
     <div className={cl.categories_page}>
       <Header />
       <main className={cl.categories_list_container}>
-        {categories.loading && <Loader />}
-        <div className={cl.categories_list}>
-          {categories.data.map((cat: any) => (
-            <CategoryItem key={cat} id={cat} />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={cl.categories_list}>
+            {data?.games?.map((game: number) => (
+              <CategoryItem key={game} id={game} />
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
     </div>

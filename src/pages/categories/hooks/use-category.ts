@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { isUndefined } from "lodash";
+import { useSettingsContext } from "../../../shared/context";
 
 export const useCategory = (id: string | number | undefined) => {
+  const settings = useSettingsContext();
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>({});
 
@@ -11,7 +13,7 @@ export const useCategory = (id: string | number | undefined) => {
     setLoading(true);
 
     try {
-      const url = `https://raw.githubusercontent.com/NikaKlokava/movie-quiz-data/main/games/${id}_en.json`;
+      const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 

@@ -1,7 +1,6 @@
 import { Footer } from "../../shared/components/footer/Footer";
 import { memo, useCallback, useEffect, useState } from "react";
 import { ModalWindowResult } from "./components/ModalWindowResult";
-import { useQuiz } from "./hooks";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
 import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
@@ -10,21 +9,22 @@ import cl from "./styles/quiz.module.css";
 import { useSettingsContext } from "../../shared/context";
 import { useLocation } from "react-router-dom";
 import { Loader } from "../../shared/components/loader";
+import { useServerData } from "../../shared/hooks";
 
 export const Quiz = memo(() => {
   const settings = useSettingsContext();
   const location = useLocation();
-  const question = useQuiz(location.state);
-
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
   const [correctAnswers, setCorrect] = useState<number>(0);
 
-  const numberOfQuestion = location.state[index];
+  const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.language}.json`;
+
+  const { loadData, isLoading, data } = useServerData(url);
 
   useEffect(() => {
-    question.loadData(numberOfQuestion);
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
@@ -69,19 +69,19 @@ export const Quiz = memo(() => {
         )}
       </header>
       <main className={cl.quiz_content}>
-        {question.loading ? (
+        {isLoading ? (
           <Loader />
         ) : (
           <Question
-            data={question.data}
-            questionNum={numberOfQuestion}
+            data={data}
+            questionNum={location.state[index]}
             onAnswer={handleQuestionResults}
             onFinish={finishQuiz}
           />
         )}
         {result && (
           <ModalWindowResult
-            data={question.data}
+            data={data}
             result={result}
             onClose={handleNextClick}
           />

@@ -1,21 +1,26 @@
 import { memo, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
-import { useCategory } from "../hooks/use-category";
+import { useSettingsContext } from "../../../shared/context";
+import { useServerData } from "../../../shared/hooks";
 import classes from "../styles/category_item.module.css";
+import { Loader } from "../../../shared/components/loader";
 
-type CategoryItemType = {
-  id: number | string | undefined;
+type Props = {
+  id: number;
 };
 
-export const CategoryItem = memo(({ id }: CategoryItemType) => {
+export const CategoryItem = memo(({ id }: Props) => {
   const navigate = useNavigate();
-  const category = useCategory(id);
+  const settings = useSettingsContext();
 
-  const { name, success, total, avatar, questions } = category.data;
+  const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
+  
+  const { loadData, isLoading, data } = useServerData(url);
+  const { name, success, total, avatar, questions } = data;
 
   useEffect(() => {
-    category.loadData();
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -25,7 +30,9 @@ export const CategoryItem = memo(({ id }: CategoryItemType) => {
 
   return (
     <div className={classes.item}>
-      {!category.loading && (
+      {isLoading ? (
+        <Loader />
+      ) : (
         <>
           <div className={classes.item_title}>{name}</div>
           <div className={classes.item_status}>{`${success} / ${total}`}</div>
