@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
-  const { t} = useTranslation()
+  const { t } = useTranslation();
   const { avatar, correctAnswer, correct } = useMemo(
     () => ({
       avatar: data.avatar,
@@ -24,11 +24,11 @@ export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
   return (
     <ModalWrapper>
       <div
-        className={`${cl.correct_actor_avatar} ${correct ? cl.green : cl.red}`}
-        style={{
-          backgroundImage: `url(${avatar})`,
-        }}
+        className={`${cl.correct_avatar_container} ${
+          correct ? cl.green : cl.red
+        }`}
       >
+        <img className={cl.actor_avatar} alt="avatar" src={`${avatar}`} />
         <div
           className={`${cl.answer_status_icon} ${
             correct ? cl.correct : cl.incorrect
