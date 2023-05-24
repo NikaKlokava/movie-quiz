@@ -5,12 +5,14 @@ import { useSettingsContext } from "../../../shared/context";
 import { useServerData } from "../../../shared/hooks";
 import classes from "../styles/category_item.module.css";
 import { Loader } from "../../../shared/components/loader";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   id: number;
 };
 
 export const CategoryItem = memo(({ id }: Props) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const settings = useSettingsContext();
 
@@ -42,7 +44,7 @@ export const CategoryItem = memo(({ id }: Props) => {
           ></div>
           <div className={classes.item_play} onClick={handlePlayClick}>
             <div className={classes.item_play_icon}></div>
-            <div className={classes.item_play_text}>Play</div>
+            <div className={classes.item_play_text}>{t("play-game")}</div>
           </div>
         </>
       )}

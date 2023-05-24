@@ -2,6 +2,7 @@ import { MyButton } from "../../../shared/components/button/MyButton";
 import cl from "../styles/modal-window.module.css";
 import { memo, useMemo } from "react";
 import { ModalWrapper } from "./ModalWrapper";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   data: Question;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
+  const { t} = useTranslation()
   const { avatar, correctAnswer, correct } = useMemo(
     () => ({
       avatar: data.avatar,
@@ -37,7 +39,7 @@ export const ModalWindowResult = memo(({ data, result, onClose }: Props) => {
         <p className={cl.correct_actor_name}>{correctAnswer.value}</p>
       )}
       <MyButton
-        text={"next"}
+        text={t("next-question")}
         style={{ color: "black", borderColor: "grey" }}
         onClick={onClose}
       />
