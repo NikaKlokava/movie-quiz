@@ -16,8 +16,7 @@ export const CategoryItem = memo(({ id }: Props) => {
   const navigate = useNavigate();
   const settings = useSettingsContext();
 
-  const quizStorageData = localStorage.getItem("quiz");
-  const quizSuccess = JSON.parse(quizStorageData!).data;
+  const quizSuccess = JSON.parse(localStorage.getItem("quiz")!)?.data;
 
   const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
 
@@ -33,7 +32,7 @@ export const CategoryItem = memo(({ id }: Props) => {
     navigate(`${routeNames.Quiz}/${id}`, { state: questions });
   };
 
-  const categoryItemSuccess = quizSuccess.find(
+  const categoryItemSuccess = quizSuccess?.find(
     (obj: { id: string; success: number }) => {
       if (+obj.id === id) {
         return obj.success;

@@ -37,8 +37,11 @@ export const QuizContextProvider = ({ children }: QuizContextProviderType) => {
     setQuizSuccess((prev) => {
       const successIsExist = prev.find((obj) => newValue.id === obj.id);
 
-      if (successIsExist && successIsExist.success < newValue.success) {
-        successIsExist.success = newValue.success;
+      if (successIsExist) {
+        if (successIsExist.success < newValue.success) {
+          successIsExist.success = newValue.success;
+        }
+        return prev;
       } else {
         prev.push(newValue);
       }
