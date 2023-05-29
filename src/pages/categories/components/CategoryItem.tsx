@@ -16,13 +16,13 @@ export const CategoryItem = memo(({ id }: Props) => {
   const navigate = useNavigate();
   const settings = useSettingsContext();
 
-  const dataStor = localStorage.getItem("quiz");
-  const userData = JSON.parse(dataStor!).data;
+  const quizStorageData = localStorage.getItem("quiz");
+  const quizSuccess = JSON.parse(quizStorageData!).data;
 
   const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
 
   const { loadData, isLoading, data } = useServerData(url);
-  const { name, success, total, avatar, questions } = data;
+  const { name, avatar, questions } = data;
 
   useEffect(() => {
     loadData();
@@ -33,7 +33,7 @@ export const CategoryItem = memo(({ id }: Props) => {
     navigate(`${routeNames.Quiz}/${id}`, { state: questions });
   };
 
-  const categoryItemSuccess = userData.find(
+  const categoryItemSuccess = quizSuccess.find(
     (obj: { id: string; success: number }) => {
       if (+obj.id === id) {
         return obj.success;
@@ -50,16 +50,23 @@ export const CategoryItem = memo(({ id }: Props) => {
         <>
           <div className={classes.item_title}>{name}</div>
           <div className={classes.item_status}>
-            {categoryItemSuccess ? `${categoryItemSuccess.success}%` : `0%`}
-            {/* {`success`} */}
+            {categoryItemSuccess ? `${categoryItemSuccess.success}%` : ``}
           </div>
           <div
             className={classes.item_avatar}
             style={{ backgroundImage: `url(${avatar})` }}
           ></div>
           <div className={classes.item_play} onClick={handlePlayClick}>
-            <div className={classes.item_play_icon}></div>
-            <div className={classes.item_play_text}>{t("play-game")}</div>
+            <div
+              className={
+                categoryItemSuccess
+                  ? classes.item_replay_icon
+                  : classes.item_play_icon
+              }
+            ></div>
+            <div className={classes.item_play_text}>
+              {categoryItemSuccess ? t("replay-game") : t("play-game")}
+            </div>
           </div>
         </>
       )}

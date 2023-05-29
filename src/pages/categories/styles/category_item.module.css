@@ -45,11 +45,20 @@
   transition: 0.4s ease-in-out;
 }
 
-.item_play_icon {
+.item_play_icon,
+.item_replay_icon {
   width: 50px;
   height: 50px;
-  background-image: url('../../../assets/play.svg');
   border-radius: 20px;
+}
+
+.item_play_icon {
+  background-image: url('../../../assets/play.svg');
+}
+
+.item_replay_icon {
+  background-size: 50px 50px;
+  background-image: url('../../../assets/replay.svg');
 }
 
 .item_play_text {

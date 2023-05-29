@@ -33,14 +33,14 @@ type QuizContextProviderType = {
 export const QuizContextProvider = ({ children }: QuizContextProviderType) => {
   const [quizSuccess, setQuizSuccess] = useState<QuizContextValueType[]>([]);
 
-  const addQuizSuccess = useCallback((newValues: QuizContextValueType) => {
+  const addQuizSuccess = useCallback((newValue: QuizContextValueType) => {
     setQuizSuccess((prev) => {
-      const exist = prev.find((obj) => newValues.id === obj.id);
+      const successIsExist = prev.find((obj) => newValue.id === obj.id);
 
-      if (!exist) {
-        prev.push(newValues);
+      if (successIsExist && successIsExist.success < newValue.success) {
+        successIsExist.success = newValue.success;
       } else {
-        exist.success = newValues.success;
+        prev.push(newValue);
       }
 
       return prev;
