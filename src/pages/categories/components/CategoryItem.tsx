@@ -16,8 +16,11 @@ export const CategoryItem = memo(({ id }: Props) => {
   const navigate = useNavigate();
   const settings = useSettingsContext();
 
+  const dataStor = localStorage.getItem("quiz");
+  const userData = JSON.parse(dataStor!).data;
+
   const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
-  
+
   const { loadData, isLoading, data } = useServerData(url);
   const { name, success, total, avatar, questions } = data;
 
@@ -30,6 +33,15 @@ export const CategoryItem = memo(({ id }: Props) => {
     navigate(`${routeNames.Quiz}/${id}`, { state: questions });
   };
 
+  const categoryItemSuccess = userData.find(
+    (obj: { id: string; success: number }) => {
+      if (+obj.id === id) {
+        return obj.success;
+      }
+      return 0;
+    }
+  );
+
   return (
     <div className={classes.item}>
       {isLoading ? (
@@ -37,7 +49,10 @@ export const CategoryItem = memo(({ id }: Props) => {
       ) : (
         <>
           <div className={classes.item_title}>{name}</div>
-          <div className={classes.item_status}>{`${success} / ${total}`}</div>
+          <div className={classes.item_status}>
+            {categoryItemSuccess ? `${categoryItemSuccess.success}%` : `0%`}
+            {/* {`success`} */}
+          </div>
           <div
             className={classes.item_avatar}
             style={{ backgroundImage: `url(${avatar})` }}

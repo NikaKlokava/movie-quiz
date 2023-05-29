@@ -5,18 +5,22 @@ import cl from "../styles/modal-end-game.module.css";
 import { ModalWrapper } from "./ModalWrapper";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import { useQuizContext } from "../../../shared/context";
 
 type Props = {
   gameResult: GameResult;
   total: number;
+  id: string | undefined;
   onRestartPress: () => void;
   correctAnswers: number;
 };
 
 export const ModalWindowEndGame = memo(
-  ({ gameResult, total, correctAnswers, onRestartPress }: Props) => {
+  ({ gameResult, total, correctAnswers, id, onRestartPress }: Props) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+
+    const quiz = useQuizContext();
 
     const isPlayStopped = gameResult === "stopped";
     const isNoCorrectAnswers = correctAnswers === 0;
@@ -29,7 +33,13 @@ export const ModalWindowEndGame = memo(
       ? t("play-again.title")
       : `${correctAnswers} / ${totalQuestionsNumber}`;
 
+    const success = Math.round((correctAnswers / total) * 100);
     const handleHomeClick = () => {
+      quiz.addQuizSuccess?.({
+        id: id,
+        success: success,
+      });
+      localStorage.setItem("quiz", JSON.stringify(quiz));
       navigate(routeNames.Home);
     };
 
