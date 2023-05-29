@@ -11,7 +11,6 @@ export const Categories = memo(() => {
   const params = useParams();
   const url = `${process.env.REACT_APP_URL}/categories/${params.id}.json`;
   const { loadData, isLoading, data } = useServerData(url);
-  console.log(localStorage.quiz);
 
   useEffect(() => {
     loadData();

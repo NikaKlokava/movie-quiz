@@ -32,23 +32,34 @@ type QuizContextProviderType = {
 
 export const QuizContextProvider = ({ children }: QuizContextProviderType) => {
   const [quizSuccess, setQuizSuccess] = useState<QuizContextValueType[]>([]);
+  const quizSuccessData = JSON.parse(localStorage.getItem("quiz")!)?.data;
 
-  const addQuizSuccess = useCallback((newValue: QuizContextValueType) => {
-    setQuizSuccess((prev) => {
-      const successIsExist = prev.find((obj) => newValue.id === obj.id);
+  const addQuizSuccess = useCallback(
+    (newValue: QuizContextValueType) => {
+      quizSuccessData?.map((object: QuizContextValueType) =>
+        setQuizSuccess((prev) => {
+          prev.push(object);
+          return prev;
+        })
+      );
 
-      if (successIsExist) {
-        if (successIsExist.success < newValue.success) {
-          successIsExist.success = newValue.success;
+      setQuizSuccess((prev) => {
+        const successIsExist = prev.find((obj) => newValue.id === obj.id);
+
+        if (successIsExist) {
+          if (successIsExist.success < newValue.success) {
+            successIsExist.success = newValue.success;
+          }
+          return prev;
+        } else {
+          prev.push(newValue);
         }
-        return prev;
-      } else {
-        prev.push(newValue);
-      }
 
-      return prev;
-    });
-  }, []);
+        return prev;
+      });
+    },
+    [quizSuccessData]
+  );
 
   const value = useMemo(
     () => ({

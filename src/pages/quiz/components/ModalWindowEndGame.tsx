@@ -34,12 +34,8 @@ export const ModalWindowEndGame = memo(
       : `${correctAnswers} / ${totalQuestionsNumber}`;
 
     const success = Math.round((correctAnswers / total) * 100);
-    const quizSuccess = JSON.parse(localStorage.getItem("quiz")!)?.data;
 
     const handleHomeClick = () => {
-      quizSuccess?.map((object: { id: string; success: number }) =>
-        quiz.addQuizSuccess?.(object)
-      );
       quiz.addQuizSuccess?.({
         id: id,
         success: success,
