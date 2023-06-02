@@ -1,5 +1,5 @@
 import { Footer } from "../../shared/components/footer/Footer";
-import { memo, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
@@ -11,7 +11,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
 
-export const Quiz = memo(() => {
+export const Quiz = () => {
   const settings = useSettingsContext();
   const location = useLocation();
   const params = useParams();
@@ -101,4 +101,4 @@ export const Quiz = memo(() => {
       <Footer />
     </div>
   );
-});
+};
