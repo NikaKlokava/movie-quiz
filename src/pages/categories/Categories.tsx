@@ -3,7 +3,7 @@ import { Footer } from "../../shared/components/footer/Footer";
 import { CategoryItem } from "./components/CategoryItem";
 import { useParams } from "react-router-dom";
 import cl from "./styles/categories.module.css";
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
 
