@@ -1,0 +1,31 @@
+{
+  "app-title-home": "Кино Игра",
+  "app-title-categories": "КиноИгра",
+  "quiz-title": {
+    "actors": "Актеры",
+    "movies": "Фильмы"
+  },
+  "settings-title": "Настройки",
+  "settings": {
+    "volume": "Громкость",
+    "time-game": "Время игры",
+    "timer": "Время для ответа"
+  },
+  "game-time": {
+    "on": "Да",
+    "off": "Нет"
+  },
+  "language": {
+    "title": "Язык",
+    "en": "Англ",
+    "ru": "Ру"
+  },
+  "setting-buttons": {
+    "default": "По умолчанию",
+    "save": "Сохранить"
+  },
+  "categories-header": {
+    "home": "Домой",
+    "categories": "Категории"
+  }
+}

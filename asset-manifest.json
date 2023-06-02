@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/movie-quiz/static/css/main.0b6487a4.css",
+    "main.js": "/movie-quiz/static/js/main.6c7d50fd.js",
+    "static/media/settings.svg": "/movie-quiz/static/media/settings.61d6fa4ac3afb4c1a9e7.svg",
+    "static/media/github.svg": "/movie-quiz/static/media/github.b5543d7b9069c8e118cb.svg",
+    "static/media/replay.svg": "/movie-quiz/static/media/replay.5441560adb9cafb4426f.svg",
+    "static/media/winn_icon.svg": "/movie-quiz/static/media/winn_icon.2b5ca7bd2c1a49e6c650.svg",
+    "static/media/fail_icon.svg": "/movie-quiz/static/media/fail_icon.6bef2277199ba456d306.svg",
+    "static/media/play.svg": "/movie-quiz/static/media/play.084cf8750313657b7de4.svg",
+    "static/media/wrong_icon.svg": "/movie-quiz/static/media/wrong_icon.fccee0ac77540bf83849.svg",
+    "static/media/linkedin.svg": "/movie-quiz/static/media/linkedin.5d4a30b4748eb2d8637c.svg",
+    "static/media/instagram.svg": "/movie-quiz/static/media/instagram.09d2bf4799340d4c43ee.svg",
+    "static/media/correct_icon.svg": "/movie-quiz/static/media/correct_icon.469f88d3acc9d118f600.svg",
+    "index.html": "/movie-quiz/index.html",
+    "static/media/getFetch.cjs": "/movie-quiz/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "static/media/back-icon.svg": "/movie-quiz/static/media/back-icon.62cd534d23b24892ea07.svg",
+    "static/media/close-icon.svg": "/movie-quiz/static/media/close-icon.40a24be340c73ca234f0.svg",
+    "main.0b6487a4.css.map": "/movie-quiz/static/css/main.0b6487a4.css.map",
+    "main.6c7d50fd.js.map": "/movie-quiz/static/js/main.6c7d50fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b6487a4.css",
+    "static/js/main.6c7d50fd.js"
+  ]
+}
