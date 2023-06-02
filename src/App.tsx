@@ -11,7 +11,7 @@ function App() {
     <Suspense fallback={"Loading"}>
       <QuizContextProvider>
         <SettingsContextProvider>
-          <HashRouter basename={process.env.PUBLIC_URL}>
+          <HashRouter>
             <ErrorBoundary fallback={<Error />}>
               <Routes>
                 {routes.map((route) => {
