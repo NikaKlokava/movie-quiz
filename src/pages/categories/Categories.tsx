@@ -7,7 +7,7 @@ import { memo, useEffect } from "react";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
 
-export const Categories = memo(() => {
+export const Categories = () => {
   const params = useParams();
   const url = `${process.env.REACT_APP_URL}/categories/${params.id}.json`;
   const { loadData, isLoading, data } = useServerData(url);
@@ -34,4 +34,4 @@ export const Categories = memo(() => {
       <Footer />
     </div>
   );
-});
+};

@@ -1,5 +1,5 @@
 import { Footer } from "../../shared/components/footer/Footer";
-import { memo, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
@@ -7,13 +7,15 @@ import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { StopQuiz } from "./components/StopQuiz";
 import cl from "./styles/quiz.module.css";
 import { useSettingsContext } from "../../shared/context";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
 
-export const Quiz = memo(() => {
+export const Quiz = () => {
   const settings = useSettingsContext();
   const location = useLocation();
+  const params = useParams();
+
   const [result, setResult] = useState<QuestionResult | undefined>();
   const [index, setIndex] = useState(0);
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
@@ -88,6 +90,7 @@ export const Quiz = memo(() => {
         )}
         {gameResult && (
           <ModalWindowEndGame
+            id={params.id}
             gameResult={gameResult}
             total={location.state.length}
             correctAnswers={correctAnswers}
@@ -98,4 +101,4 @@ export const Quiz = memo(() => {
       <Footer />
     </div>
   );
-});
+};

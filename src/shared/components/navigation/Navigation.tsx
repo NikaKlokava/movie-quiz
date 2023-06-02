@@ -2,8 +2,9 @@ import classes from "./navigation.module.css";
 import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
 import { useTranslation } from "react-i18next";
+import { memo } from "react";
 
-export const Navigation = () => {
+export const Navigation = memo(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -21,4 +22,4 @@ export const Navigation = () => {
       </div>
     </>
   );
-};
+});

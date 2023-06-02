@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const useServerData = (url: string) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<any>([]);
 
   const loadData = async () => {
