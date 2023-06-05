@@ -15,5 +15,5 @@ jobs:
         with:
           node-version: "18"
 
-      - name: "deploy"
-        run: npm run deploy
+      - run: npm i
+      - run: npm run deploy
