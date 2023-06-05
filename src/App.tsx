@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { routes } from "./router";
 import { SettingsContextProvider } from "./shared/context/settings-context";
 import { ErrorBoundary } from "react-error-boundary";
@@ -11,7 +11,7 @@ function App() {
     <Suspense fallback={"Loading"}>
       <QuizContextProvider>
         <SettingsContextProvider>
-          <BrowserRouter>
+          <HashRouter>
             <ErrorBoundary fallback={<Error />}>
               <Routes>
                 {routes.map((route) => {
@@ -25,7 +25,7 @@ function App() {
                 })}
               </Routes>
             </ErrorBoundary>
-          </BrowserRouter>
+          </HashRouter>
         </SettingsContextProvider>
       </QuizContextProvider>
     </Suspense>
