@@ -14,6 +14,5 @@ jobs:
         name: "setup node"
         with:
           node-version: "18"
-      - uses: actions/upload-pages-artifact
       - run: npm i
       - run: npm run deploy
