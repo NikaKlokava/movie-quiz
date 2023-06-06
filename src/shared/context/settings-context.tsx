@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useReducer,
 } from "react";
+import i18n from "../../i18n";
 
 type SettingsContextValuesType = {
   data: {
@@ -24,7 +25,7 @@ type SettingsContextType = SettingsContextValuesType & {
 
 export const defaultSettingsValues = {
   data: { time: 20, active: false, volume: 40, language: "en" },
-  loading: false,
+  loading: true,
 };
 
 export const SettingsContext = createContext<SettingsContextType>(
@@ -48,7 +49,11 @@ function reducer(state: any, action: any) {
         loading: false,
       };
     case "default":
-      return defaultSettingsValues;
+      return {
+        data: defaultSettingsValues,
+        loading: false,
+      };
+
     default:
       throw new Error();
   }
@@ -60,8 +65,10 @@ export const SettingsContextProvider = ({
   const [state, dispatch] = useReducer(reducer, defaultSettingsValues);
 
   useEffect(() => {
+    dispatch({ type: "loading" });
     const data = JSON.parse(localStorage.getItem("settings")!);
     dispatch({ type: "update", payload: data });
+    i18n.changeLanguage(data.data.language);
   }, []);
 
   const updateSettings = useCallback((newValues: SettingsContextValuesType) => {
@@ -72,6 +79,7 @@ export const SettingsContextProvider = ({
 
   const defaultSettings = useCallback(() => {
     dispatch({ type: "default" });
+    i18n.changeLanguage("en");
   }, []);
 
   const value = useMemo(
