@@ -15,7 +15,7 @@ export const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const settings = useSettingsContext();
-  const url = `${process.env.REACT_APP_URL}/categories/${settings.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/categories/${settings.data.language}.json`;
   const { loadData, isLoading, data } = useServerData(url);
 
   useEffect(() => {

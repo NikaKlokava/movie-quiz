@@ -19,13 +19,13 @@ export const Timer = memo(({ onTimeout }: Props) => {
     return () => {
       clearInterval(interval);
     };
-  }, [settings.time]);
+  }, [settings.data.time]);
 
   useEffect(() => {
-    if (settings.time === seconds) {
+    if (settings.data.time === seconds) {
       onTimeout("timeout");
     }
-  }, [onTimeout, seconds, settings.time]);
+  }, [onTimeout, seconds, settings.data.time]);
 
   return (
     <div className={cl.question_timer}>
@@ -33,7 +33,7 @@ export const Timer = memo(({ onTimeout }: Props) => {
         <div className={cl.timer_duration_all}>
           <div
             className={cl.timer_duration_tick}
-            style={{ width: `${(seconds / settings.time) * 100}%` }}
+            style={{ width: `${(seconds / settings.data.time) * 100}%` }}
           />
         </div>
       </div>

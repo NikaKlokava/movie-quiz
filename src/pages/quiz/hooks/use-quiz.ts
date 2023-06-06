@@ -13,7 +13,7 @@ export const useQuiz = (question: any) => {
     setLoading(true);
 
     try {
-      const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.language}.json`;
+      const url = `${process.env.REACT_APP_URL}/questions/${index}/${settings.data.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 
