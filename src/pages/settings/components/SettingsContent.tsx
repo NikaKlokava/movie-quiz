@@ -15,17 +15,17 @@ export const SettingsContent = () => {
   const settings = useSettingsContext();
   const navigate = useNavigate();
 
-  const [volume, setVolume] = useState(settings.volume);
-  const [active, setActive] = useState(settings.active);
-  const [time, setTime] = useState(settings.time);
-  const [language, setLanguage] = useState(settings.language);
+  const [volume, setVolume] = useState(settings.data.volume);
+  const [active, setActive] = useState(settings.data.active);
+  const [time, setTime] = useState(settings.data.time);
+  const [language, setLanguage] = useState(settings.data.language);
 
   const handleDefaultClick = useCallback(() => {
-    setActive(defaultSettingsValues.active);
-    setVolume(defaultSettingsValues.volume);
-    setTime(defaultSettingsValues.time);
-    setLanguage(defaultSettingsValues.language);
-    i18n.changeLanguage(defaultSettingsValues.language);
+    setActive(defaultSettingsValues.data.active);
+    setVolume(defaultSettingsValues.data.volume);
+    setTime(defaultSettingsValues.data.time);
+    setLanguage(defaultSettingsValues.data.language);
+    i18n.changeLanguage(defaultSettingsValues.data.language);
 
     settings.updateSettings?.(defaultSettingsValues);
   }, [settings]);
@@ -67,10 +67,12 @@ export const SettingsContent = () => {
 
   const handleSavePress = useCallback(() => {
     settings.updateSettings?.({
-      volume,
-      active,
-      time,
-      language,
+      data: {
+        volume,
+        active,
+        time,
+        language,
+      },
     });
 
     i18n.changeLanguage(language);

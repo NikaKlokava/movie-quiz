@@ -18,7 +18,7 @@ export const CategoryItem = memo(({ id }: Props) => {
 
   const quizSuccess = JSON.parse(localStorage.getItem("quiz")!)?.data;
 
-  const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.data.language}.json`;
 
   const { loadData, isLoading, data } = useServerData(url);
   const { name, avatar, questions } = data;

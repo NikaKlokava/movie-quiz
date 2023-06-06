@@ -11,7 +11,7 @@ export const useHome = () => {
     setIsLoading(true);
 
     try {
-      const url = `${process.env.REACT_APP_URL}/categories/${settings.language}.json`;
+      const url = `${process.env.REACT_APP_URL}/categories/${settings.data.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 

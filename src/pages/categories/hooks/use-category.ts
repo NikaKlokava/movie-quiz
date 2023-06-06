@@ -13,7 +13,7 @@ export const useCategory = (id: string | number | undefined) => {
     setLoading(true);
 
     try {
-      const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.language}.json`;
+      const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.data.language}.json`;
       const res = await fetch(url);
       const json = await res.json();
 
