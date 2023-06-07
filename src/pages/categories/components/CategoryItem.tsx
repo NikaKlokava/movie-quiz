@@ -1,7 +1,6 @@
 import { memo, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
-// import { useSettingsContext } from "../../../shared/context";
 import { useServerData } from "../../../shared/hooks";
 import classes from "../styles/category_item.module.css";
 import { Loader } from "../../../shared/components/loader";
