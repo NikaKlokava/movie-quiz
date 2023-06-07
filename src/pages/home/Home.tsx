@@ -32,15 +32,13 @@ export const Home = () => {
           {isLoading ? (
             <Loader />
           ) : (
-            data.map((quiz: Quiz) => (
-              <MyButton
-                key={quiz.id}
-                text={t(quiz.name)}
-                onClick={() => {
-                  navigate(`${routeNames.Categories}/${quiz.id}`);
-                }}
-              />
-            ))
+            <MyButton
+              key={0}
+              text="Play"
+              onClick={() => {
+                navigate(`${routeNames.Categories}/0`);
+              }}
+            />
           )}
         </div>
       </main>
