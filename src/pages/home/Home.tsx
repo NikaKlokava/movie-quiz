@@ -9,13 +9,11 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
-import { useSettingsContext } from "../../shared/context/settings-context";
 
 export const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const settings = useSettingsContext();
-  const url = `${process.env.REACT_APP_URL}/categories/${settings.data.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/categories/quizzes.json`;
   const { loadData, isLoading, data } = useServerData(url);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ export const Home = () => {
         <SettingsIcon />
       </header>
       <main className={cl.home_content}>
-        <AppTitle title={t("app-title-home")} size="big" />
+        <AppTitle title={t("home.title")} size="big" />
         <div className={cl.home_content_buttons}>
           {isLoading ? (
             <Loader />
@@ -37,7 +35,7 @@ export const Home = () => {
             data.map((quiz: Quiz) => (
               <MyButton
                 key={quiz.id}
-                text={quiz.name}
+                text={t(quiz.name)}
                 onClick={() => {
                   navigate(`${routeNames.Categories}/${quiz.id}`);
                 }}

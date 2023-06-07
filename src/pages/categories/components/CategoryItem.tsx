@@ -1,7 +1,6 @@
 import { memo, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
-import { useSettingsContext } from "../../../shared/context";
 import { useServerData } from "../../../shared/hooks";
 import classes from "../styles/category_item.module.css";
 import { Loader } from "../../../shared/components/loader";
@@ -9,19 +8,17 @@ import { useTranslation } from "react-i18next";
 
 type Props = {
   id: number;
+  index: number;
 };
 
-export const CategoryItem = memo(({ id }: Props) => {
+export const CategoryItem = memo(({ id, index }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const settings = useSettingsContext();
-
   const quizSuccess = JSON.parse(localStorage.getItem("quiz")!)?.data;
-
-  const url = `${process.env.REACT_APP_URL}/games/${id}_${settings.data.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/games/${id}.json`;
 
   const { loadData, isLoading, data } = useServerData(url);
-  const { name, avatar, questions } = data;
+  const { avatar, questions } = data;
 
   useEffect(() => {
     loadData();
@@ -47,7 +44,9 @@ export const CategoryItem = memo(({ id }: Props) => {
         <Loader />
       ) : (
         <>
-          <div className={classes.item_title}>{name}</div>
+          <div className={classes.item_title}>
+            {t("games.name", { count: index })}
+          </div>
           <div className={classes.item_status}>
             {categoryItemSuccess ? `${categoryItemSuccess.success}%` : ``}
           </div>
@@ -64,7 +63,9 @@ export const CategoryItem = memo(({ id }: Props) => {
               }
             ></div>
             <div className={classes.item_play_text}>
-              {categoryItemSuccess ? t("replay-game") : t("play-game")}
+              {categoryItemSuccess
+                ? t("games.buttons.replay")
+                : t("games.buttons.play")}
             </div>
           </div>
         </>

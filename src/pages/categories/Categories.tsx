@@ -25,8 +25,8 @@ export const Categories = () => {
           <Loader />
         ) : (
           <div className={cl.categories_list}>
-            {data?.games?.map((game: number) => (
-              <CategoryItem key={game} id={game} />
+            {data?.games?.map((game: number, i: number) => (
+              <CategoryItem key={game} id={game} index={++i} />
             ))}
           </div>
         )}

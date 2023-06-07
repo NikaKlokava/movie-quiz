@@ -146,7 +146,7 @@ export const SettingsContent = () => {
                   text={t("setting-buttons.default")}
                   onClick={() => {
                     settings.defaultSettings?.();
-                    setValues(defaultSettingsValues.data, true);
+                    setValues(defaultSettingsValues.data);
                   }}
                 />
                 <MyButton
