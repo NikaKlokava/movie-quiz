@@ -10,7 +10,7 @@ export const Header = memo(() => {
   return (
     <header className={cl.header}>
       <div className={cl.header_content}>
-        <AppTitle title={t("app-title-categories")} size="small" />
+        <AppTitle title={t("games.title")} size="small" />
         <Navigation />
       </div>
       <SettingsIcon />

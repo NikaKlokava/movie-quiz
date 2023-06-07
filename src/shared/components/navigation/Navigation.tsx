@@ -15,10 +15,10 @@ export const Navigation = memo(() => {
   return (
     <>
       <div className={classes.navigation_home} onClick={handleHomeClick}>
-        {t("categories-header.home")}
+        {t("navigation.home")}
       </div>
       <div className={classes.navigation_categories}>
-        {t("categories-header.categories")}
+        {t("navigation.categories")}
       </div>
     </>
   );
