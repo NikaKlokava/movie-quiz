@@ -21,7 +21,7 @@ export const Quiz = () => {
   const [gameResult, setGameResult] = useState<GameResult | undefined>();
   const [correctAnswers, setCorrect] = useState<number>(0);
 
-  const url = `${process.env.REACT_APP_URL}/questions/${location.state[index]}/${settings.language}.json`;
+  const url = `${process.env.REACT_APP_URL}/questions/${location.state[index]}/${settings.data.language}.json`;
 
   const { loadData, isLoading, data } = useServerData(url);
 
@@ -66,7 +66,7 @@ export const Quiz = () => {
         {!result && !gameResult && (
           <>
             <StopQuiz onStop={handleStopQuiz} />
-            {settings.active && <Timer onTimeout={endTimerTime} />}
+            {settings.data.active && <Timer onTimeout={endTimerTime} />}
           </>
         )}
       </header>
