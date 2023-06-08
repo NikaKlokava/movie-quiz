@@ -1,6 +1,5 @@
 import { Header } from "../../shared/components/header/Header";
 import { Footer } from "../../shared/components/footer/Footer";
-import { CardItem } from "../../shared/components/card_item";
 import { GameItem } from "./components/GameItem";
 import { useParams } from "react-router-dom";
 import cl from "./styles/games.module.css";

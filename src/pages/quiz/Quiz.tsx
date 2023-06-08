@@ -5,11 +5,13 @@ import { Question } from "./components";
 import { Timer } from "./components/Timer";
 import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { StopQuiz } from "./components/StopQuiz";
-import cl from "./styles/quiz.module.css";
 import { useSettingsContext } from "../../shared/context";
 import { useLocation, useParams } from "react-router-dom";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
+import { Header } from "../../shared/components/header";
+import cl from "./styles/quiz.module.css";
+import classes from "../../shared/styles/styles.module.css";
 
 export const Quiz = () => {
   const settings = useSettingsContext();
@@ -61,16 +63,15 @@ export const Quiz = () => {
   }, []);
 
   return (
-    <div className={cl.quiz_page}>
-      <header className={cl.quiz_header}>
+    <div className={classes.page}>
+      <Header />
+      <main className={cl.quiz_content}>
         {!result && !gameResult && (
-          <>
+          <div className={cl.quiz_header_status}>
             <StopQuiz onStop={handleStopQuiz} />
             {settings.data.active && <Timer onTimeout={endTimerTime} />}
-          </>
+          </div>
         )}
-      </header>
-      <main className={cl.quiz_content}>
         {isLoading ? (
           <Loader />
         ) : (

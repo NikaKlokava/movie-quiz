@@ -1,10 +1,4 @@
-.quiz_page {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
-}
-
-.quiz_header {
+.quiz_header_status {
   display: flex;
   justify-content: center;
   column-gap: 20px;
