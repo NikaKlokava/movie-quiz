@@ -1,5 +1,4 @@
 import { Categories } from "../pages/categories/Categories";
-import { Home } from "../pages/home/Home";
 import { Quiz } from "../pages/quiz/Quiz";
 import { Settings } from "../pages/settings/Settings";
 import { Games } from "../pages/games/Games";
@@ -15,7 +14,6 @@ export enum routeNames {
 }
 
 export const routes = [
-  { path: routeNames.Home, element: <Home />, key: 1 },
   {
     path: routeNames.Categories,
     element: <Categories />,

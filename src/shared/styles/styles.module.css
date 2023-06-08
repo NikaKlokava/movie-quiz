@@ -3,3 +3,10 @@
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
 }
+
+.items_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+  gap: 30px;
+  padding: 30px
+}
