@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { SettingsContent } from "./components/SettingsContent";
 import { routeNames } from "../../router";
 import cl from "./styles/settings.module.css";
+import classes from "../../shared/styles/styles.module.css";
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
@@ -15,7 +16,7 @@ export const Settings = () => {
   }, [navigate]);
 
   return (
-    <div className={cl.settings_page}>
+    <div className={classes.page}>
       <header className={cl.settings_header}>
         <div
           className={cl.settings_header_back}
