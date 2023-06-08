@@ -12,14 +12,28 @@ export const Navigation = memo(() => {
     navigate(routeNames.Home);
   };
 
+  const handleCategoriesClick = () => {
+    isInSettings && navigate(routeNames.Categories);
+  };
+
+  const isInSettings = window.location.hash === "#/settings";
+
   return (
     <>
-      <div className={classes.navigation_home} onClick={handleHomeClick}>
+      <div className={classes.nav_home} onClick={handleHomeClick}>
         {t("navigation.home")}
       </div>
-      <div className={classes.navigation_categories}>
+      <div
+        className={
+          isInSettings ? classes.nav_categories : classes.nav_categories_active
+        }
+        onClick={handleCategoriesClick}
+      >
         {t("navigation.categories")}
       </div>
+      {isInSettings && (
+        <div className={classes.nav_settings}>{t("navigation.settings")}</div>
+      )}
     </>
   );
 });
