@@ -79,6 +79,7 @@ export const SettingsContextProvider = ({
 
   const defaultSettings = useCallback(() => {
     dispatch({ type: "default" });
+    localStorage.setItem("settings", JSON.stringify(defaultSettingsValues));
     i18n.changeLanguage("en");
   }, []);
 
