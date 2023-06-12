@@ -36,13 +36,7 @@ export const SettingsContent = () => {
             navigate(routeNames.Home);
           }}
         >
-          {({
-            values,
-            handleChange,
-            setFieldValue,
-            handleSubmit,
-            setValues,
-          }) => (
+          {({ values, setFieldValue, handleSubmit, setValues }) => (
             <>
               {/* <div className={cl.settings_content_volume}>
                 <p className={cl.volume_text}>{t("settings.volume")}</p>

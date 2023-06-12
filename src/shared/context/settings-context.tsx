@@ -50,7 +50,7 @@ function reducer(state: any, action: any) {
       };
     case "default":
       return {
-        data: defaultSettingsValues,
+        data: defaultSettingsValues.data,
         loading: false,
       };
 
@@ -64,14 +64,6 @@ export const SettingsContextProvider = ({
 }: SettingsContextProviderType) => {
   const [state, dispatch] = useReducer(reducer, defaultSettingsValues);
 
-  useEffect(() => {
-    dispatch({ type: "loading" });
-    const data = JSON.parse(localStorage.getItem("settings")!);
-    dispatch({ type: "update", payload: data });
-    const lang = data?.data?.language;
-    lang && i18n.changeLanguage(lang);
-  }, []);
-
   const updateSettings = useCallback((newValues: SettingsContextValuesType) => {
     dispatch({ type: "loading" });
     dispatch({ type: "update", payload: newValues });
@@ -83,6 +75,16 @@ export const SettingsContextProvider = ({
     localStorage.setItem("settings", JSON.stringify(defaultSettingsValues));
     i18n.changeLanguage("en");
   }, []);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("settings")!);
+    if (!data) {
+      defaultSettings();
+    } else {
+      updateSettings(data);
+      i18n.changeLanguage(data.data.language);
+    }
+  }, [defaultSettings, updateSettings]);
 
   const value = useMemo(
     () => ({
