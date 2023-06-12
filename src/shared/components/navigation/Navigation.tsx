@@ -3,10 +3,14 @@ import { useNavigate } from "react-router";
 import { routeNames } from "../../../router";
 import { useTranslation } from "react-i18next";
 import { memo } from "react";
+import { useLocation } from "react-router-dom";
 
 export const Navigation = memo(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isInSettings = location.pathname === "/settings";
 
   const handleHomeClick = () => {
     navigate(routeNames.Home);
@@ -15,8 +19,6 @@ export const Navigation = memo(() => {
   const handleCategoriesClick = () => {
     isInSettings && navigate(routeNames.Categories);
   };
-
-  const isInSettings = window.location.hash === "#/settings";
 
   return (
     <>

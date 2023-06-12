@@ -44,7 +44,7 @@ export const SettingsContent = () => {
             setValues,
           }) => (
             <>
-              <div className={cl.settings_content_volume}>
+              {/* <div className={cl.settings_content_volume}>
                 <p className={cl.volume_text}>{t("settings.volume")}</p>
                 <input
                   className={cl.volume_slider}
@@ -54,7 +54,7 @@ export const SettingsContent = () => {
                   value={values.volume}
                   onChange={handleChange}
                 ></input>
-              </div>
+              </div> */}
               <div className={cl.settings_content_timeon}>
                 <p className={cl.timeon_text}>{t("settings.time-game")}</p>
                 <div className={cl.timeon_choose}>
