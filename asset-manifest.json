@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movie-quiz/static/css/main.53bfa7d5.css",
-    "main.js": "/movie-quiz/static/js/main.2727173f.js",
+    "main.js": "/movie-quiz/static/js/main.cf5cd572.js",
     "static/media/settings.svg": "/movie-quiz/static/media/settings.61d6fa4ac3afb4c1a9e7.svg",
     "static/media/github.svg": "/movie-quiz/static/media/github.b5543d7b9069c8e118cb.svg",
     "static/media/replay.svg": "/movie-quiz/static/media/replay.5441560adb9cafb4426f.svg",
@@ -16,10 +16,10 @@
     "static/media/getFetch.cjs": "/movie-quiz/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/close-icon.svg": "/movie-quiz/static/media/close-icon.40a24be340c73ca234f0.svg",
     "main.53bfa7d5.css.map": "/movie-quiz/static/css/main.53bfa7d5.css.map",
-    "main.2727173f.js.map": "/movie-quiz/static/js/main.2727173f.js.map"
+    "main.cf5cd572.js.map": "/movie-quiz/static/js/main.cf5cd572.js.map"
   },
   "entrypoints": [
     "static/css/main.53bfa7d5.css",
-    "static/js/main.2727173f.js"
+    "static/js/main.cf5cd572.js"
   ]
 }
