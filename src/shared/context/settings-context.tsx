@@ -68,7 +68,8 @@ export const SettingsContextProvider = ({
     dispatch({ type: "loading" });
     const data = JSON.parse(localStorage.getItem("settings")!);
     dispatch({ type: "update", payload: data });
-    i18n.changeLanguage(data!.data!.language);
+    const lang = data?.data?.language;
+    lang && i18n.changeLanguage(lang);
   }, []);
 
   const updateSettings = useCallback((newValues: SettingsContextValuesType) => {
