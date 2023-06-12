@@ -1,15 +1,14 @@
-import { Footer } from "../../shared/components/footer/Footer";
 import { useCallback, useEffect, useState } from "react";
 import { ModalWindowResult } from "./components/ModalWindowResult";
 import { Question } from "./components";
 import { Timer } from "./components/Timer";
 import { ModalWindowEndGame } from "./components/ModalWindowEndGame";
 import { StopQuiz } from "./components/StopQuiz";
-import cl from "./styles/quiz.module.css";
 import { useSettingsContext } from "../../shared/context";
 import { useLocation, useParams } from "react-router-dom";
 import { Loader } from "../../shared/components/loader";
 import { useServerData } from "../../shared/hooks";
+import cl from "./styles/quiz.module.css";
 
 export const Quiz = () => {
   const settings = useSettingsContext();
@@ -61,44 +60,39 @@ export const Quiz = () => {
   }, []);
 
   return (
-    <div className={cl.quiz_page}>
-      <header className={cl.quiz_header}>
-        {!result && !gameResult && (
-          <>
-            <StopQuiz onStop={handleStopQuiz} />
-            {settings.data.active && <Timer onTimeout={endTimerTime} />}
-          </>
-        )}
-      </header>
-      <main className={cl.quiz_content}>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <Question
-            data={data}
-            questionNum={location.state[index]}
-            onAnswer={handleQuestionResults}
-            onFinish={finishQuiz}
-          />
-        )}
-        {result && (
-          <ModalWindowResult
-            data={data}
-            result={result}
-            onClose={handleNextClick}
-          />
-        )}
-        {gameResult && (
-          <ModalWindowEndGame
-            id={params.id}
-            gameResult={gameResult}
-            total={location.state.length}
-            correctAnswers={correctAnswers}
-            onRestartPress={restartQuiz}
-          />
-        )}
-      </main>
-      <Footer />
-    </div>
+    <main className={cl.quiz_content}>
+      {!result && !gameResult && (
+        <div className={cl.quiz_header_status}>
+          <StopQuiz onStop={handleStopQuiz} />
+          {settings.data.active && <Timer onTimeout={endTimerTime} />}
+        </div>
+      )}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Question
+          data={data}
+          questionNum={location.state[index]}
+          onAnswer={handleQuestionResults}
+          onFinish={finishQuiz}
+        />
+      )}
+      {result && (
+        <ModalWindowResult
+          data={data}
+          result={result}
+          onClose={handleNextClick}
+        />
+      )}
+      {gameResult && (
+        <ModalWindowEndGame
+          id={params.id}
+          gameResult={gameResult}
+          total={location.state.length}
+          correctAnswers={correctAnswers}
+          onRestartPress={restartQuiz}
+        />
+      )}
+    </main>
   );
 };

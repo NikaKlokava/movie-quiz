@@ -1,18 +1,25 @@
-.navigation_home,
-.navigation_categories {
+.nav_home,
+.nav_categories,
+.nav_settings,
+.nav_categories_active {
   color: #ffe4c4;
   font-size: 16px;
   font-family: 'Arvo', serif;
-  margin-left: 30px;
   transition: 0.3s ease-in-out;
 }
-.navigation_home {
+
+.nav_home {
+  margin-left: 30px;
+}
+
+.nav_home,
+.nav_categories {
   cursor: pointer;
 }
 
-.navigation_categories,
-.navigation_home:hover {
+.nav_categories:hover,
+.nav_home:hover,
+.nav_settings,
+.nav_categories_active {
   color: #ffba66;
 }
-
-

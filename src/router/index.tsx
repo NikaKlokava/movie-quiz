@@ -1,7 +1,7 @@
 import { Categories } from "../pages/categories/Categories";
-import { Home } from "../pages/home/Home";
 import { Quiz } from "../pages/quiz/Quiz";
 import { Settings } from "../pages/settings/Settings";
+import { Games } from "../pages/games/Games";
 import { Navigate } from "react-router";
 
 export enum routeNames {
@@ -9,13 +9,13 @@ export enum routeNames {
   Quiz = "/quiz",
   Settings = "/settings",
   Categories = "/categories",
+  Games = "/categories",
   RedirectHome = "*",
 }
 
 export const routes = [
-  { path: routeNames.Home, element: <Home />, key: 1 },
   {
-    path: `${routeNames.Categories}/:id`,
+    path: routeNames.Categories,
     element: <Categories />,
     key: 2,
   },
@@ -26,4 +26,5 @@ export const routes = [
     element: <Navigate to={routeNames.Home} replace />,
     key: 5,
   },
+  { path: `${routeNames.Games}/:id`, element: <Games />, key: 6 },
 ];
