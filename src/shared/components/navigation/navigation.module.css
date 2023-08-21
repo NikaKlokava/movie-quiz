@@ -23,3 +23,9 @@
 .nav_categories_active {
   color: #ffba66;
 }
+
+@media screen and (max-width: 600px) {
+  .nav_home {
+    margin-left: 5px;
+  }
+}

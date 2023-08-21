@@ -45,6 +45,8 @@
 
 .current_game_time {
   font-size: 20px;
+  min-width: 35px;
+  text-align: center;
 }
 
 .increment,
@@ -78,4 +80,12 @@
 
 .languages {
   margin: 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .settings_content_buttons {
+    flex-direction: column;
+    column-gap: 0px;
+    row-gap: 20px;
+  }
 }

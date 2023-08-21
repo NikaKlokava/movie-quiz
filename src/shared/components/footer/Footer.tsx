@@ -7,9 +7,15 @@ export const Footer = memo(() => {
       <p className={classes.footer_content}>Veranika Klokava</p>
       <p className={classes.footer_content}>2023</p>
       <ul className={classes.links}>
-        <li className={classes.instagram}></li>
-        <li className={classes.github}></li>
-        <li className={classes.linkedin}></li>
+        <a href="https://instagram.com/nika_klokava?igshid=MmIzYWVlNDQ5Yg==">
+          <div className={classes.instagram} />
+        </a>
+        <a href="https://github.com/NikaKlokava">
+          <div className={classes.github} />
+        </a>
+        <a href="https://linkedin.com/in/veranika-klokava-858b5b287">
+          <div className={classes.linkedin} />
+        </a>
       </ul>
     </footer>
   );

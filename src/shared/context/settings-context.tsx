@@ -65,10 +65,13 @@ export const SettingsContextProvider = ({
   const [state, dispatch] = useReducer(reducer, defaultSettingsValues);
 
   useEffect(() => {
-    dispatch({ type: "loading" });
     const data = JSON.parse(localStorage.getItem("settings")!);
-    dispatch({ type: "update", payload: data });
-    i18n.changeLanguage(data.data.language);
+    if (data) {
+      dispatch({ type: "update", payload: data });
+      i18n.changeLanguage(data.data.language);
+    } else {
+      dispatch({ type: "update", payload: defaultSettingsValues });
+    }
   }, []);
 
   const updateSettings = useCallback((newValues: SettingsContextValuesType) => {
