@@ -10,3 +10,10 @@
   gap: 30px;
   padding: 30px
 }
+
+@media screen and (max-width:600px) {
+  .items_list {
+    justify-content: center;
+    padding: 10px
+  }
+}

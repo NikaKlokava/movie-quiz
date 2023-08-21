@@ -58,3 +58,10 @@
   left: 80px;
   color: bisque;
 }
+
+@media screen and (max-width: 600px) {
+  .app_title_small {
+    margin-left: 15px;
+    font-weight: 600;
+  }
+}
