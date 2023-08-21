@@ -9,3 +9,14 @@
   display: flex;
   gap: 30px;
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    min-height: 140px;
+  }
+
+  .header_content {
+    display: flex;
+    gap: 10px;
+  }
+}

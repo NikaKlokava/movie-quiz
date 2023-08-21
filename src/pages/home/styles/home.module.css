@@ -9,9 +9,3 @@
   justify-content: space-around;
   align-items: center;
 }
-
-.home_content_buttons {
-  display: flex;
-  justify-content: space-evenly;
-  column-gap: 100px;
-}

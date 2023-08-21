@@ -64,6 +64,7 @@ export const SettingsContextProvider = ({
 }: SettingsContextProviderType) => {
   const [state, dispatch] = useReducer(reducer, defaultSettingsValues);
 
+
   const updateSettings = useCallback((newValues: SettingsContextValuesType) => {
     dispatch({ type: "loading" });
     dispatch({ type: "update", payload: newValues });

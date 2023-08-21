@@ -12,3 +12,10 @@
 .settings_icon:hover {
   transform: rotatez(0.5turn);
 }
+
+@media screen and (max-width: 600px) {
+  .settings_icon {
+    margin: 10px;
+    margin-left: 0px;
+  }
+}

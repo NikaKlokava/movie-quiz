@@ -17,3 +17,11 @@
   background-color: #FFBCA2;
   color: black;
 }
+
+@media screen and (max-width: 600px) {
+  .button_style {
+    min-width: 120px;
+    line-height: 30px;
+    border-radius: 20px;
+  }
+}
